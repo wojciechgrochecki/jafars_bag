@@ -1,4 +1,4 @@
-import AddOfferButton from "../buttons/AddOfferButton";
+import AddOfferButton from "../../buttons/AddOfferButton";
 import { BellIcon, HomeIcon, SearchIcon, UserIcon } from "./NavIcons";
 
 function MobileNav() {
