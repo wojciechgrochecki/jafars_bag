@@ -107,7 +107,7 @@ function AddOfferButton() {
             y2="47.2542"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#8635CC" />
+            <stop stopColor="#8635CC" />
             <stop offset="0.799224" stopColor="#A865E2" />
           </linearGradient>
         </defs>
