@@ -4,12 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 const buttonVariants = cva(
-  "flex flex-row items-center justify-center gap-1 rounded-md text-sm font-medium",
+  "flex flex-row items-center justify-center gap-1 rounded-md text-sm font-medium active:scale-95 transition",
   {
     variants: {
       variant: {
         default: "bg-accent text-white",
         secondary: "text-accent shadow-ring-accent bg-white",
+        comment: "border border-slate-200 text-slate-700 hover:bg-slate-100 ",
       },
       size: {
         default: "h-9 px-3 py-2",
