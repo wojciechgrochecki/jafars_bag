@@ -1,6 +1,6 @@
 import { IconStar } from "@tabler/icons-react";
-import SecondaryButton from "./SecondaryButton";
 import { cn } from "../../utils/cn";
+import { Button } from ".";
 
 interface Props {
   active: boolean;
@@ -8,12 +8,12 @@ interface Props {
 
 export default function AddToFavButton({ active }: Props) {
   return (
-    <SecondaryButton className="p-[6px] ">
+    <Button size="icon" variant="secondary">
       <IconStar
         className={cn("stroke-accent stroke-[1.5]", {
           "fill-accent": active,
         })}
       />
-    </SecondaryButton>
+    </Button>
   );
 }
