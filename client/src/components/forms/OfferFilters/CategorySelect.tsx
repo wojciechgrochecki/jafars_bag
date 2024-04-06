@@ -18,7 +18,7 @@ const CategorySelect = () => {
   return (
     <div className="flex w-full flex-wrap gap-2">
       {categories.map((cat) => (
-        <Checkbox onChange={setChecked} {...cat} />
+        <Checkbox onChange={setChecked} key={cat.id} {...cat} />
       ))}
     </div>
   );
