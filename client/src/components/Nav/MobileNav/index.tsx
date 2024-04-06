@@ -1,6 +1,6 @@
 import AddOfferButton from "@components/buttons/AddOfferButton";
 import { BellIcon, HomeIcon, SearchIcon, UserIcon } from "./NavIcons";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 
 const forbiddenPaths = ["/okazja/", "/another-path/", "/yet-another-path/"];
 
@@ -18,11 +18,15 @@ function MobileNav() {
         <>
           <div className="h-24 w-full bg-transparent"></div>
           <nav className="fixed bottom-3 left-3 right-3 flex h-16 flex-row items-center justify-between rounded-[20px] bg-white px-3 py-3 shadow-nav">
-            <HomeIcon active />
+            <NavLink to="/" end>
+              {({ isActive }) => <HomeIcon active={isActive} />}
+            </NavLink>
             <SearchIcon />
             <AddOfferButton />
             <BellIcon />
-            <UserIcon />
+            <NavLink to="/konto">
+              {({ isActive }) => <UserIcon active={isActive} />}
+            </NavLink>
           </nav>
         </>
       )}
