@@ -1,5 +1,5 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { IconCircleMinus, IconCirclePlus } from "@tabler/icons-react";
+import { IconCircleCheck, IconCirclePlus } from "@tabler/icons-react";
 import { useState } from "react";
 
 const CategorySelect = () => {
@@ -40,7 +40,7 @@ const Checkbox = ({ category, id, selected, onChange }: CheckboxProps) => {
     >
       <div className="flex h-fit w-fit items-center justify-center overflow-hidden text-current">
         {selected ? (
-          <IconCircleMinus className="h-6 w-6 stroke-[1.5px] text-white" />
+          <IconCircleCheck className="h-6 w-6 stroke-[1.5px] text-white" />
         ) : (
           <IconCirclePlus className="h-6 w-6 stroke-[1.5px]" />
         )}

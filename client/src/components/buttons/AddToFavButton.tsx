@@ -1,5 +1,5 @@
 import { IconStar } from "@tabler/icons-react";
-import { cn } from "../../utils/cn";
+import { cn } from "@/utils/cn";
 import { Button } from ".";
 
 interface Props {

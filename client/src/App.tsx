@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import MobileNav from "./components/Nav/MobileNav";
+import HomePage from "@/pages/HomePage";
+import MobileNav from "@components/Nav/MobileNav";
 
 function App() {
   return (

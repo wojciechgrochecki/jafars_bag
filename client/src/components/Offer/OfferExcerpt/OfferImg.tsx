@@ -1,4 +1,4 @@
-import dummyImg from "../../../assets/offer_picture.jpg";
+import dummyImg from "@assets/offer_picture.jpg";
 
 export default function OfferImg() {
   return (

@@ -1,9 +1,9 @@
 import { Label } from "@radix-ui/react-label";
-import CloseButton from "../../buttons/CloseButton";
+import CloseButton from "@components/buttons/CloseButton";
 import { RadioGroup, RadioGroupItem } from "../inputs/radio";
 import { Input } from "../inputs/input";
 import { CategorySelect } from "./CategorySelect";
-import { Button } from "../../buttons";
+import { Button } from "@components/buttons";
 
 export function OfferFilters() {
   return (
