@@ -11,6 +11,8 @@ const buttonVariants = cva(
         default: "bg-accent text-white",
         secondary: "text-accent shadow-ring-accent bg-white",
         comment: "border border-slate-200 text-slate-700 hover:bg-slate-100 ",
+        ghost:
+          "text-slate-700 rounded-lg hover:bg-slate-100 active:bg-slate-100",
       },
       size: {
         default: "h-9 px-3 py-2",
