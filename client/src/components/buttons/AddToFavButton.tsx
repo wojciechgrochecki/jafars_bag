@@ -8,11 +8,14 @@ interface Props {
 
 export default function AddToFavButton({ active }: Props) {
   return (
-    <Button size="icon" variant="secondary">
+    <Button size="icon" variant="secondary" className="group">
       <IconStar
-        className={cn("stroke-accent stroke-[1.5]", {
-          "fill-accent": active,
-        })}
+        className={cn(
+          "stroke-accent stroke-[1.5] transition group-hover:scale-[1.15] group-hover:fill-accent",
+          {
+            "fill-accent": active,
+          },
+        )}
       />
     </Button>
   );
