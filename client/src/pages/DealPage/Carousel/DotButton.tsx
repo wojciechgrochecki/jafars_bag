@@ -54,7 +54,7 @@ export const DotButton: React.FC<PropType> = ({ active, ...props }) => {
   return (
     <button
       type="button"
-      className={`full h-3 w-3 cursor-pointer rounded-full bg-slate-200 ${active && "!bg-accent"}`}
+      className={`full h-3 w-3 cursor-pointer rounded-full bg-slate-200 transition ${active && "!bg-accent"}`}
       {...props}
     ></button>
   );
