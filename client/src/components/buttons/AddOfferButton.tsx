@@ -1,6 +1,11 @@
-function AddOfferButton() {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+function AddOfferButton({ ...props }: ButtonProps) {
   return (
-    <button className="relative bottom-1/2 transition hover:scale-110">
+    <button
+      className="relative bottom-1/2 transition hover:scale-110"
+      {...props}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="61"
