@@ -3,8 +3,21 @@ import { Button } from "@/components/buttons";
 import { Label } from "@/components/forms/Label";
 import { Input } from "@/components/forms/inputs/input";
 import { IconLink } from "@tabler/icons-react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type FormInputs = {
+  deal_link: string;
+};
 
 export default function LinkStep() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormInputs>();
+
+  const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
+
   return (
     <div className="flex flex-col items-center gap-8 pb-20">
       <header>
@@ -14,7 +27,7 @@ export default function LinkStep() {
         </p>
       </header>
       <main className="w-full">
-        <form action="" className="h-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="h-full">
           <div className="space-y-1">
             <Label htmlFor="deal_link">
               Link do okazji
@@ -24,7 +37,12 @@ export default function LinkStep() {
             </Label>
             <div className="relative">
               <Input
-                id="deal_link"
+                {...register("deal_link", {
+                  pattern: {
+                    value: /^https:\/\//,
+                    message: "Link powinien zaczynać się od 'https://'",
+                  },
+                })}
                 placeholder="https://link/do/twojej/okazji..."
                 className="pl-11"
               />
@@ -32,6 +50,11 @@ export default function LinkStep() {
                 <IconLink className="h-6 w-6 cursor-text text-slate-400" />
               </span>
             </div>
+            {errors.deal_link?.message && (
+              <p className="text-[12px] text-red-500">
+                {errors.deal_link.message}
+              </p>
+            )}
           </div>
           <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4">
             <Button type="submit" className="h-fit w-full py-3">
