@@ -5,6 +5,7 @@ import LayoutWithNav from "./layouts/LayoutWithNav";
 import AddDealLayout from "./pages/AddDealPage/AddDealFormLayout";
 import LinkStep from "./pages/AddDealPage/LinkStep";
 import DetailsStep from "./pages/AddDealPage/DetailsStep";
+import DescriptionStep from "./pages/AddDealPage/DescriptionStep";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="dodaj-ogloszenie" element={<AddDealLayout />}>
           <Route index element={<LinkStep />} />
           <Route path={"szczegoly"} element={<DetailsStep />} />
+          <Route path={"opis"} element={<DescriptionStep />} />
         </Route>
       </Routes>
     </>
