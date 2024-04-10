@@ -11,4 +11,7 @@ export default defineConfig({
       "@assets": "/src/assets",
     },
   },
+  optimizeDeps: {
+    exclude: ["merge-refs"],
+  },
 });
