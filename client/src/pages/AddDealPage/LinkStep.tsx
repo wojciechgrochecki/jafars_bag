@@ -4,19 +4,24 @@ import { Label } from "@/components/forms/Label";
 import { Input } from "@/components/forms/inputs/input";
 import { IconLink } from "@tabler/icons-react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 type FormInputs = {
   deal_link: string;
 };
 
 export default function LinkStep() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>();
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormInputs> = (_data) => {
+    navigate("szczegoly");
+  };
 
   return (
     <div className="flex flex-col items-center gap-8 pb-20">
@@ -37,14 +42,16 @@ export default function LinkStep() {
             </Label>
             <div className="relative">
               <Input
+                id="deal_link"
+                type="url"
+                placeholder="https://link/do/twojej/okazji..."
+                className="pl-11"
                 {...register("deal_link", {
                   pattern: {
                     value: /^https:\/\//,
                     message: "Link powinien zaczynać się od 'https://'",
                   },
                 })}
-                placeholder="https://link/do/twojej/okazji..."
-                className="pl-11"
               />
               <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center">
                 <IconLink className="h-6 w-6 cursor-text text-slate-400" />
