@@ -12,5 +12,5 @@ export default {
       colors: { accent: "#8635CC", "accent-light": "#9352CC" },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
