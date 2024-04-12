@@ -2,39 +2,36 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 function AddOfferButton({ ...props }: ButtonProps) {
   return (
-    <button
-      className="relative bottom-1/2 transition hover:scale-110"
-      {...props}
-    >
+    <button {...props}>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="61"
-        height="64"
-        viewBox="0 0 61 64"
+        width="71"
+        height="76"
+        viewBox="0 0 71 76"
         fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <g filter="url(#filter0_d_423_65)">
-          <g filter="url(#filter1_d_423_65)">
+        <g filter="url(#filter0_d_612_445)">
+          <g filter="url(#filter1_d_612_445)">
             <path
-              d="M28.625 3.08253C29.7853 2.41266 31.2147 2.41266 32.375 3.08253L54.6058 15.9175C55.766 16.5873 56.4808 17.8253 56.4808 19.1651V44.8349C56.4808 46.1747 55.766 47.4127 54.6058 48.0825L32.375 60.9175C31.2147 61.5873 29.7853 61.5873 28.625 60.9175L6.39424 48.0825C5.23398 47.4127 4.51924 46.1747 4.51924 44.8349V19.1651C4.51924 17.8253 5.23398 16.5873 6.39424 15.9175L28.625 3.08253Z"
-              fill="url(#paint0_linear_423_65)"
+              d="M33.3125 4.26295C34.6661 3.48143 36.3339 3.48144 37.6875 4.26295L63.6234 19.237C64.977 20.0186 65.8109 21.4629 65.8109 23.0259V52.9741C65.8109 54.5371 64.977 55.9814 63.6234 56.763L37.6875 71.737C36.3339 72.5186 34.6661 72.5186 33.3125 71.737L7.37661 56.763C6.02298 55.9814 5.18911 54.5371 5.18911 52.9741V23.0259C5.18911 21.4629 6.02298 20.0186 7.37661 19.237L33.3125 4.26295Z"
+              fill="url(#paint0_linear_612_445)"
             />
           </g>
           <path
-            d="M31.125 22.625V41.375M40.5 32H21.75"
+            d="M36.2291 27.0625V48.9375M47.1666 38H25.2916"
             stroke="white"
-            strokeWidth="3.125"
+            strokeWidth="3.64583"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
         </g>
         <defs>
           <filter
-            id="filter0_d_423_65"
-            x="-0.75"
-            y="0.75"
-            width="62.5"
-            height="62.5"
+            id="filter0_d_612_445"
+            x="-0.958333"
+            y="1.54167"
+            width="72.9167"
+            height="72.9167"
             filterUnits="userSpaceOnUse"
             colorInterpolationFilters="sRGB"
           >
@@ -46,13 +43,13 @@ function AddOfferButton({ ...props }: ButtonProps) {
               result="hardAlpha"
             />
             <feMorphology
-              radius="2.5"
+              radius="2.91667"
               operator="erode"
               in="SourceAlpha"
-              result="effect1_dropShadow_423_65"
+              result="effect1_dropShadow_612_445"
             />
             <feOffset />
-            <feGaussianBlur stdDeviation="1.875" />
+            <feGaussianBlur stdDeviation="2.1875" />
             <feColorMatrix
               type="matrix"
               values="0 0 0 0 0.0941176 0 0 0 0 0.152941 0 0 0 0 0.294118 0 0 0 0.19 0"
@@ -60,21 +57,21 @@ function AddOfferButton({ ...props }: ButtonProps) {
             <feBlend
               mode="normal"
               in2="BackgroundImageFix"
-              result="effect1_dropShadow_423_65"
+              result="effect1_dropShadow_612_445"
             />
             <feBlend
               mode="normal"
               in="SourceGraphic"
-              in2="effect1_dropShadow_423_65"
+              in2="effect1_dropShadow_612_445"
               result="shape"
             />
           </filter>
           <filter
-            id="filter1_d_423_65"
-            x="2.01923"
-            y="0.0801394"
-            width="56.9615"
-            height="63.8397"
+            id="filter1_d_612_445"
+            x="2.27242"
+            y="0.760092"
+            width="66.4552"
+            height="74.4798"
             filterUnits="userSpaceOnUse"
             colorInterpolationFilters="sRGB"
           >
@@ -86,7 +83,7 @@ function AddOfferButton({ ...props }: ButtonProps) {
               result="hardAlpha"
             />
             <feOffset />
-            <feGaussianBlur stdDeviation="1.25" />
+            <feGaussianBlur stdDeviation="1.45833" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix
               type="matrix"
@@ -95,21 +92,21 @@ function AddOfferButton({ ...props }: ButtonProps) {
             <feBlend
               mode="normal"
               in2="BackgroundImageFix"
-              result="effect1_dropShadow_423_65"
+              result="effect1_dropShadow_612_445"
             />
             <feBlend
               mode="normal"
               in="SourceGraphic"
-              in2="effect1_dropShadow_423_65"
+              in2="effect1_dropShadow_612_445"
               result="shape"
             />
           </filter>
           <linearGradient
-            id="paint0_linear_423_65"
-            x1="4.875"
-            y1="16.375"
-            x2="51.8559"
-            y2="47.2542"
+            id="paint0_linear_612_445"
+            x1="5.60416"
+            y1="19.7708"
+            x2="60.4153"
+            y2="55.7966"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#8635CC" />
