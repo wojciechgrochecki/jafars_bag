@@ -6,6 +6,7 @@ import AddDealLayout from "./pages/AddDealPage/AddDealFormLayout";
 import LinkStep from "./pages/AddDealPage/LinkStep";
 import DetailsStep from "./pages/AddDealPage/DetailsStep";
 import DescriptionStep from "./pages/AddDealPage/DescriptionStep";
+import ImagesStep from "./pages/AddDealPage/ImagesStep";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<LinkStep />} />
           <Route path={"szczegoly"} element={<DetailsStep />} />
           <Route path={"opis"} element={<DescriptionStep />} />
+          <Route path={"zdjecia"} element={<ImagesStep />} />
         </Route>
       </Routes>
     </>
