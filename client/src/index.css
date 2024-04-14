@@ -25,5 +25,16 @@
         -webkit-appearance: none;
         margin: 0;
     }
+}
 
+@layer components {
+
+    .drag-handle {
+        cursor: move;
+        cursor: -webkit-grabbing;
+    }
+
+    .ghost {
+        opacity: 30%;
+    }
 }
