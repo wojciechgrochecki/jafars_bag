@@ -11,7 +11,7 @@ export function OfferFilters() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="fixed bottom-[84px] right-4 flex h-fit w-fit flex-row items-center gap-2 rounded-full border border-accent bg-white px-4 py-2 text-sm font-medium text-accent shadow-md transition focus:outline-none active:scale-95">
+        <button className="fixed bottom-[76px] right-4 flex h-fit w-fit flex-row items-center gap-2 rounded-full border border-accent bg-white px-4 py-2 text-sm font-medium text-accent shadow-md transition focus:outline-none active:scale-95">
           <IconAdjustmentsHorizontal className="h-6 w-6 stroke-[1.5px] text-accent" />
           Filtry
         </button>
