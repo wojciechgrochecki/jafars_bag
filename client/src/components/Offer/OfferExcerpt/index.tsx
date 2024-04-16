@@ -7,14 +7,17 @@ import EndsIn from "../EndsIn";
 import PriceInfo from "../PriceInfo";
 import OfferImg from "./OfferImg";
 import { IconLink } from "@tabler/icons-react";
-import defaultAvatar from "@assets/default-avatar.png";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { IconCalendarClock } from "@tabler/icons-react";
 import VoteButton from "../VoteButton";
+import { Link } from "react-router-dom";
 
 function OfferExcerpt() {
   return (
-    <div className="flex flex-col gap-3 rounded-lg bg-white p-3 shadow-ring">
+    <Link
+      to={"okazja/1"}
+      className="flex flex-col gap-3 rounded-lg bg-white p-3 shadow-ring"
+    >
       <div className="flex flex-row gap-2">
         <OfferImg />
         <div className="flex flex-col gap-1">
@@ -41,7 +44,7 @@ function OfferExcerpt() {
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-1">
           <Avatar>
-            <AvatarImage src={defaultAvatar} />
+            <AvatarImage src={import.meta.env.DEFAULT_AVATAR_PATH} />
             <AvatarFallback delayMs={500}>AV</AvatarFallback>
           </Avatar>
           <div className="flex flex-col items-start gap-1">
@@ -61,7 +64,7 @@ function OfferExcerpt() {
           <VoteButton />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
