@@ -19,7 +19,7 @@ export default function DescriptionStep() {
   } = useForm<FormInputs>();
 
   const onSubmit: SubmitHandler<FormInputs> = (_data) => {
-    navigate("/");
+    navigate("../zdjecia");
   };
 
   return (

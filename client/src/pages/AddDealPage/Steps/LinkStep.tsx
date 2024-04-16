@@ -32,7 +32,7 @@ export default function LinkStep() {
         </p>
       </header>
       <main className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)} className="h-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="h-full" noValidate>
           <div className="space-y-1">
             <Label htmlFor="deal_link">
               Link do okazji
@@ -46,6 +46,7 @@ export default function LinkStep() {
                 type="url"
                 placeholder="https://link/do/twojej/okazji..."
                 className="pl-11"
+                invalid={!!errors.deal_link}
                 {...register("deal_link", {
                   pattern: {
                     value: /^https:\/\//,
@@ -58,7 +59,7 @@ export default function LinkStep() {
               </span>
             </div>
             {errors.deal_link?.message && (
-              <p className="text-[12px] text-red-500">
+              <p className="text-[12px] text-red-600">
                 {errors.deal_link.message}
               </p>
             )}
