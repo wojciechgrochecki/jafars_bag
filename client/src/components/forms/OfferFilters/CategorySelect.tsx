@@ -1,72 +1,101 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { IconCircleCheck, IconCirclePlus } from "@tabler/icons-react";
-import { useState } from "react";
+import { ReactNode, forwardRef } from "react";
 
-const CategorySelect = () => {
-  const [categories, setCategories] = useState(g_categories);
-
-  const setChecked = (id: number, checked: boolean) => {
-    const updatedCategories = [...categories];
-    const index = updatedCategories.findIndex((cat) => cat.id === id);
-    updatedCategories[index] = {
-      ...updatedCategories[index],
-      selected: checked,
-    };
-    setCategories(updatedCategories);
-  };
-
-  return (
-    <div className="flex w-full flex-wrap gap-2">
-      {categories.map((cat) => (
-        <Checkbox onChange={setChecked} key={cat.id} {...cat} />
-      ))}
-    </div>
-  );
+type CategorySelectProps = {
+  readonly categories: Category[];
+  onCheckedChange: (id: number, checked: boolean) => void;
+  selection: number | undefined;
 };
+const CategorySelect = forwardRef<HTMLDivElement, CategorySelectProps>(
+  ({ categories, onCheckedChange, selection }, ref) => {
+    let content: ReactNode;
+    if (selection) {
+      const category = categories.find((cat) => cat.id == selection)!;
+      content = (
+        <CategoryCheckbox
+          description={category.description}
+          id={category.id}
+          isChecked={true}
+          onChange={onCheckedChange}
+        />
+      );
+    } else {
+      content = categories.map((cat) => (
+        <CategoryCheckbox
+          key={cat.id}
+          description={cat.description}
+          id={cat.id}
+          isChecked={false}
+          onChange={onCheckedChange}
+        />
+      ));
+    }
 
-interface CheckboxProps extends Category {
+    return (
+      <div
+        ref={ref}
+        className="flex h-fit min-h-36 w-full flex-wrap content-start items-start gap-2"
+      >
+        {content}
+      </div>
+    );
+  },
+);
+
+interface CheckboxProps {
   onChange: (id: number, checked: boolean) => void;
+  description: string;
+  isChecked: boolean;
+  id: number;
 }
 
-const Checkbox = ({ category, id, selected, onChange }: CheckboxProps) => {
+const CategoryCheckbox = ({
+  description,
+  id,
+  isChecked,
+  onChange,
+}: CheckboxProps) => {
   return (
     <CheckboxPrimitive.Root
-      checked={selected}
-      onCheckedChange={(val) => onChange(id, val == true)}
+      checked={isChecked}
+      onCheckedChange={(val) => {
+        console.log("selected checkbox id", id);
+        onChange(id, val == true);
+      }}
       value={id}
-      className="flex flex-row items-center gap-1
-   rounded-full border border-slate-300 bg-white px-2 py-[6px] text-sm font-normal text-slate-500
+      className="flex h-fit flex-row items-center gap-1
+   rounded-full border border-slate-400 bg-white px-2 py-[6px] text-sm font-normal text-slate-800
     transition-transform active:scale-95 data-[state=checked]:bg-accent data-[state=checked]:text-white"
     >
       <div className="flex h-fit w-fit items-center justify-center overflow-hidden text-current">
-        {selected ? (
+        {isChecked ? (
           <IconCircleCheck className="h-6 w-6 stroke-[1.5px] text-white" />
         ) : (
           <IconCirclePlus className="h-6 w-6 stroke-[1.5px]" />
         )}
       </div>
-      {category}
+      {description}
     </CheckboxPrimitive.Root>
   );
 };
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+CategoryCheckbox.displayName = CheckboxPrimitive.Root.displayName;
 
 interface Category {
   id: number;
-  category: string;
-  selected: boolean;
+  description: string;
 }
 
-const g_categories: Category[] = [
-  { category: "Odzież i obuwie", id: 1, selected: false },
-  { category: "Elektronika", id: 2, selected: false },
-  { category: "Zdrowie i uroda", id: 3, selected: false },
-  { category: "Dom i ogród", id: 4, selected: false },
-  { category: "Podróże", id: 5, selected: false },
-  { category: "Sport i rekreacja", id: 6, selected: false },
-  { category: "Motoryzacja", id: 7, selected: false },
-  { category: "Moda", id: 8, selected: false },
-  { category: "Inne", id: 9, selected: false },
+const dummy_categories: Category[] = [
+  { description: "Odzież i obuwie", id: 1 },
+  { description: "Elektronika", id: 2 },
+  { description: "Zdrowie i uroda", id: 3 },
+  { description: "Dom i ogród", id: 4 },
+  { description: "Podróże", id: 5 },
+  { description: "Sport i rekreacja", id: 6 },
+  { description: "Motoryzacja", id: 7 },
+  { description: "Moda", id: 8 },
+  { description: "Inne", id: 9 },
 ];
 
-export { CategorySelect };
+export { CategorySelect, dummy_categories };
