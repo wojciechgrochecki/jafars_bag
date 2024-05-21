@@ -2,7 +2,6 @@ import { useDropzone, type FileRejection } from "react-dropzone";
 import { useCallback, useState } from "react";
 import { IconCloudUpload, IconDroplet } from "@tabler/icons-react";
 import DropzoneErrorModal from "./DropzoneErrorModal";
-import FilesDisplay from "./FilesDisplay";
 
 interface DropzoneProps {
   files: File[];
@@ -20,7 +19,7 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
 
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
-      setFiles((prev) => (prev ? [...prev, ...acceptedFiles] : acceptedFiles));
+      setFiles((prev) => [...prev, ...acceptedFiles]);
       if (rejectedFiles.length) {
         handleFileRejections(rejectedFiles);
       }
@@ -29,7 +28,7 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
   );
 
   const handleFileRejections = (rejectedFiles: FileRejection[]) => {
-    let errorData: ErrorData = { typeErrors: [], duplicateErrors: [] };
+    const errorData: ErrorData = { typeErrors: [], duplicateErrors: [] };
     for (const rejectedFile of rejectedFiles) {
       switch (rejectedFile.errors[0].code) {
         case "file-invalid-type": {
@@ -51,10 +50,6 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
       setErrors(errorData);
       setIsModalOpen(true);
     }
-  };
-
-  const handleDelete = (fileName: string) => {
-    setFiles((prev) => prev?.filter((file) => file.name !== fileName));
   };
 
   const nameValidator = (file: File) => {
@@ -79,13 +74,12 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
   });
 
   const fileNames = files?.map((file) => file.name);
-
   return (
     <div className="flex flex-col">
       <div
         {...getRootProps({
           className: `flex h-[175px] cursor-pointer border-dashed flex-col items-center justify-center gap-2
-               rounded-lg border border-accent-light bg-purple-50 px-4 py-3 relative ${
+               rounded-lg border border-accent-light/50 bg-purple-50 px-4 py-3 relative ${
                  isDragActive && "!border-blue-500"
                }`,
         })}
@@ -94,14 +88,14 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
         {isDragActive ? (
           <>
             <IconDroplet className="h-12 w-12 animate-bounce stroke-[1.25] text-accent-light duration-1000" />
-            <p className="max-w-[200px] text-center text-xs font-medium italic text-accent">
+            <p className="max-w-[200px] text-center text-xs font-medium text-accent">
               Upuść tutaj...
             </p>
           </>
         ) : (
           <>
             <IconCloudUpload className="h-12 w-12 stroke-[1.25] text-accent-light" />
-            <p className="max-w-[200px] text-center text-xs italic text-accent">
+            <p className="max-w-[200px] text-center text-xs text-accent">
               <b className="font-semibold">Kliknij</b>, aby dodać zdjęcie lub
               przeciągnij i upuść
             </p>
@@ -114,7 +108,6 @@ function Dropzone({ files, setFiles }: DropzoneProps) {
           {files.length}/6
         </p>
       </div>
-      <FilesDisplay fileNames={fileNames} onDelete={handleDelete} />
       <DropzoneErrorModal
         setIsOpen={setIsModalOpen}
         isOpen={isModalOpen}
