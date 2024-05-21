@@ -4,7 +4,7 @@ interface FormContextProviderProps {
   children: React.ReactNode;
 }
 
-interface AddDealForm {
+export interface AddDealForm {
   deal_link: string;
   deal_title: string;
   deal_description: string;
