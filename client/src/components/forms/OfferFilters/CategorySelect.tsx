@@ -35,6 +35,7 @@ const CategorySelect = forwardRef<HTMLDivElement, CategorySelectProps>(
     return (
       <div
         ref={ref}
+        tabIndex={-1}
         className="flex h-fit min-h-36 w-full flex-wrap content-start items-start gap-2"
       >
         {content}
