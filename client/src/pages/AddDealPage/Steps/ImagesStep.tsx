@@ -4,12 +4,13 @@ import { Button } from "@/components/buttons";
 import Draggable from "@/components/draggable/Draggable";
 import Dropzone from "@/components/forms/inputs/dropzone";
 import { ImagePreview } from "@/components/forms/inputs/dropzone/ImagePreview";
+import { useFormContext } from "@/context/FormContext";
 import { useState } from "react";
 import { SortableEvent } from "sortablejs";
 
 export default function ImagesStep() {
-  const [files, setFiles] = useState<File[]>([]);
-
+  const { formState, setFormState } = useFormContext();
+  const [files, setFiles] = useState<File[]>(formState.deal_images!);
   const handleDelete = (fileName: string) => {
     setFiles((prev) => prev?.filter((file) => file.name !== fileName));
   };
@@ -21,6 +22,11 @@ export default function ImagesStep() {
       return newOrder;
     });
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    setFormState({ deal_images: files });
+    e.preventDefault();
+  };
+
   return (
     <div className="flex max-w-3xl flex-col items-center gap-8 pb-20">
       <header>
@@ -30,10 +36,7 @@ export default function ImagesStep() {
         </p>
       </header>
       <main className="w-full">
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="h-fit min-h-full space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="h-fit min-h-full space-y-4">
           <Dropzone files={files} setFiles={setFiles} />
           <div className="space-y-2">
             <TypographyH4>Wybrane zdjęcia</TypographyH4>

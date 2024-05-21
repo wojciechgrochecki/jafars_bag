@@ -8,17 +8,20 @@ import { DatePicker } from "@/components/forms/inputs/input/DatePicker";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { dummy_categories } from "@/components/forms/OfferFilters/CategorySelect";
+import { AddDealForm, useFormContext } from "@/context/FormContext";
 
-interface FormInputs {
-  deal_title: string;
-  deal_discount_price: number;
-  deal_normal_price: number;
-  deal_start_date: Date;
-  deal_end_date: Date;
-  deal_category_id: number;
-}
+type FormInputs = Pick<
+  AddDealForm,
+  | "deal_title"
+  | "deal_discount_price"
+  | "deal_normal_price"
+  | "deal_start_date"
+  | "deal_end_date"
+  | "deal_category_id"
+>;
 
 export default function DetailsStep() {
+  const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
   const {
@@ -28,14 +31,25 @@ export default function DetailsStep() {
     clearErrors,
     control,
     formState: { errors },
-  } = useForm<FormInputs>();
+  } = useForm<FormInputs>({
+    defaultValues: {
+      deal_title: formState.deal_title,
+      deal_discount_price: formState.deal_discount_price,
+      deal_normal_price: formState.deal_normal_price,
+      deal_start_date: formState.deal_start_date,
+      deal_end_date: formState.deal_end_date,
+      deal_category_id: formState.deal_category_id,
+    },
+  });
 
   const [discount_price, normal_price] = watch([
     "deal_discount_price",
     "deal_normal_price",
   ]);
 
-  const onSubmit: SubmitHandler<FormInputs> = (_data) => {
+  const onSubmit: SubmitHandler<FormInputs> = (formData) => {
+    setFormState(formData);
+    setNextStep(3);
     navigate("../opis");
   };
 
@@ -59,7 +73,6 @@ export default function DetailsStep() {
             </Label>
             <Input
               id="deal_title"
-              type="text"
               invalid={!!errors.deal_title}
               {...register("deal_title", {
                 required: "Tytuł okazji jest wymagany",
@@ -95,6 +108,20 @@ export default function DetailsStep() {
                     required: "To pole jest wymagane",
                     min: { value: 0, message: "Cena nie może być ujemna" },
                     valueAsNumber: true,
+                    validate: (
+                      _,
+                      { deal_discount_price, deal_normal_price },
+                    ) => {
+                      if (
+                        deal_normal_price != undefined &&
+                        deal_discount_price <= deal_normal_price
+                      ) {
+                        clearErrors("deal_normal_price");
+                        return true;
+                      } else if (deal_discount_price > deal_normal_price)
+                        return "Okazyjna cena powinna być niższa niż zwykła";
+                      return true;
+                    },
                   })}
                 />
                 <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center text-slate-400">
@@ -125,8 +152,15 @@ export default function DetailsStep() {
                       _,
                       { deal_discount_price, deal_normal_price },
                     ) => {
-                      if (deal_discount_price >= deal_normal_price)
-                        return "Cena przed obniżką powinna być większa niż okazyjna";
+                      if (
+                        deal_discount_price != undefined &&
+                        deal_discount_price <= deal_normal_price
+                      ) {
+                        clearErrors("deal_discount_price");
+                        return true;
+                      } else if (deal_discount_price > deal_normal_price)
+                        return "Zwykła cena powinna być wyższa niż okazyjna";
+                      return true;
                     },
                   })}
                 />

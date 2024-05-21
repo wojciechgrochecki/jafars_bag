@@ -2,23 +2,27 @@ import TypographyH2 from "@/components/Typography/TypographyH2";
 import { Button } from "@/components/buttons";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/inputs/textarea";
+import { AddDealForm, useFormContext } from "@/context/FormContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-interface FormInputs {
-  deal_description: string;
-}
+type FormInputs = Pick<AddDealForm, "deal_description">;
 
 export default function DescriptionStep() {
+  const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputs>();
+  } = useForm<FormInputs>({
+    defaultValues: { deal_description: formState.deal_description },
+  });
 
-  const onSubmit: SubmitHandler<FormInputs> = (_data) => {
+  const onSubmit: SubmitHandler<FormInputs> = (formData) => {
+    setFormState(formData);
+    setNextStep(4);
     navigate("../zdjecia");
   };
 

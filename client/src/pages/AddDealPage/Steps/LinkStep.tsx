@@ -2,24 +2,28 @@ import TypographyH2 from "@/components/Typography/TypographyH2";
 import { Button } from "@/components/buttons";
 import { Label } from "@/components/forms/Label";
 import { Input } from "@/components/forms/inputs/input";
+import { AddDealForm, useFormContext } from "@/context/FormContext";
 import { IconLink } from "@tabler/icons-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-type FormInputs = {
-  deal_link: string;
-};
+type FormInputs = Pick<AddDealForm, "deal_link">;
 
 export default function LinkStep() {
+  const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputs>();
+  } = useForm<FormInputs>({
+    defaultValues: { deal_link: formState.deal_link },
+  });
 
-  const onSubmit: SubmitHandler<FormInputs> = (_data) => {
+  const onSubmit: SubmitHandler<FormInputs> = (formData) => {
+    setFormState(formData);
+    setNextStep(2);
     navigate("szczegoly");
   };
 
