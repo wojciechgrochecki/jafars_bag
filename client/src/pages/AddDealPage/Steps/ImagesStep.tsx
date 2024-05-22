@@ -5,12 +5,17 @@ import Draggable from "@/components/draggable/Draggable";
 import Dropzone from "@/components/forms/inputs/dropzone";
 import { ImagePreview } from "@/components/forms/inputs/dropzone/ImagePreview";
 import { useFormContext } from "@/context/FormContext";
+import React, { useImperativeHandle } from "react";
 import { useState } from "react";
 import { SortableEvent } from "sortablejs";
+import { StepperRef } from "../FormLayout";
+import { useNavigate } from "react-router-dom";
 
-export default function ImagesStep() {
-  const { formState, setFormState } = useFormContext();
+const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
+  const { formState, setFormState, setNextStep } = useFormContext();
   const [files, setFiles] = useState<File[]>(formState.deal_images!);
+  const navigate = useNavigate();
+
   const handleDelete = (fileName: string) => {
     setFiles((prev) => prev?.filter((file) => file.name !== fileName));
   };
@@ -26,6 +31,21 @@ export default function ImagesStep() {
     setFormState({ deal_images: files });
     e.preventDefault();
   };
+
+  useImperativeHandle(
+    ref,
+    () => {
+      console.log("reconstruct");
+      return {
+        validateAndStep(navigateTo, nextStep) {
+          setFormState({ deal_images: files });
+          setNextStep(nextStep);
+          navigate(navigateTo);
+        },
+      };
+    },
+    [files],
+  );
 
   return (
     <div className="flex max-w-3xl flex-col items-center gap-8 pb-20">
@@ -60,4 +80,6 @@ export default function ImagesStep() {
       </main>
     </div>
   );
-}
+});
+
+export default ImagesStep;

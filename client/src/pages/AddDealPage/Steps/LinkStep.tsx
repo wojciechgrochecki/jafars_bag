@@ -4,19 +4,21 @@ import { Label } from "@/components/forms/Label";
 import { Input } from "@/components/forms/inputs/input";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
 import { IconLink } from "@tabler/icons-react";
+import React, { useImperativeHandle } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { StepperRef } from "../FormLayout";
 
 type FormInputs = Pick<AddDealForm, "deal_link">;
 
-export default function LinkStep() {
+const LinkStep = React.forwardRef<StepperRef>((_props, ref) => {
   const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { isDirty, errors },
   } = useForm<FormInputs>({
     defaultValues: { deal_link: formState.deal_link },
   });
@@ -26,6 +28,27 @@ export default function LinkStep() {
     setNextStep(2);
     navigate("szczegoly");
   };
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        validateAndStep(navigateTo, nextStep) {
+          if (!isDirty) {
+            setNextStep(nextStep);
+            navigate(navigateTo);
+          } else {
+            handleSubmit((formData) => {
+              setFormState(formData);
+              setNextStep(nextStep);
+              navigate(navigateTo);
+            })();
+          }
+        },
+      };
+    },
+    [isDirty],
+  );
 
   return (
     <div className="flex flex-col items-center gap-8 pb-20">
@@ -77,4 +100,6 @@ export default function LinkStep() {
       </main>
     </div>
   );
-}
+});
+
+export default LinkStep;

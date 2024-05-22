@@ -3,19 +3,21 @@ import { Button } from "@/components/buttons";
 import { Label } from "@/components/forms/Label";
 import { Textarea } from "@/components/forms/inputs/textarea";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
+import React, { useImperativeHandle } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { StepperRef } from "../FormLayout";
 
 type FormInputs = Pick<AddDealForm, "deal_description">;
 
-export default function DescriptionStep() {
+const DescriptionStep = React.forwardRef<StepperRef>((_props, ref) => {
   const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { isDirty, errors },
   } = useForm<FormInputs>({
     defaultValues: { deal_description: formState.deal_description },
   });
@@ -25,6 +27,27 @@ export default function DescriptionStep() {
     setNextStep(4);
     navigate("../zdjecia");
   };
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        async validateAndStep(navigateTo, nextStep) {
+          if (!isDirty) {
+            setNextStep(nextStep);
+            navigate(navigateTo);
+          } else {
+            handleSubmit((formData) => {
+              setFormState(formData);
+              setNextStep(nextStep);
+              navigate(navigateTo);
+            })();
+          }
+        },
+      };
+    },
+    [isDirty],
+  );
 
   return (
     <div className="flex flex-col items-center gap-8 pb-20">
@@ -67,4 +90,6 @@ export default function DescriptionStep() {
       </main>
     </div>
   );
-}
+});
+
+export default DescriptionStep;

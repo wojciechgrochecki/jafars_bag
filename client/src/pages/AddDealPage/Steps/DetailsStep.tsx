@@ -9,6 +9,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { dummy_categories } from "@/components/forms/OfferFilters/CategorySelect";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
+import React, { useImperativeHandle } from "react";
+import { StepperRef } from "../FormLayout";
 
 type FormInputs = Pick<
   AddDealForm,
@@ -20,7 +22,7 @@ type FormInputs = Pick<
   | "deal_category_id"
 >;
 
-export default function DetailsStep() {
+const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
   const { formState, setFormState, setNextStep } = useFormContext();
   const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ export default function DetailsStep() {
     watch,
     clearErrors,
     control,
-    formState: { errors },
+    formState: { isDirty, errors },
   } = useForm<FormInputs>({
     defaultValues: {
       deal_title: formState.deal_title,
@@ -41,6 +43,27 @@ export default function DetailsStep() {
       deal_category_id: formState.deal_category_id,
     },
   });
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        validateAndStep(navigateTo, nextStep) {
+          if (!isDirty) {
+            setNextStep(nextStep);
+            navigate(navigateTo);
+          } else {
+            handleSubmit((formData) => {
+              setFormState(formData);
+              setNextStep(nextStep);
+              navigate(navigateTo);
+            })();
+          }
+        },
+      };
+    },
+    [isDirty],
+  );
 
   const [discount_price, normal_price] = watch([
     "deal_discount_price",
@@ -107,7 +130,11 @@ export default function DetailsStep() {
                   {...register("deal_discount_price", {
                     required: "To pole jest wymagane",
                     min: { value: 0, message: "Cena nie może być ujemna" },
-                    valueAsNumber: true,
+                    setValueAs: (v) => {
+                      if (v === undefined || v === "" || Number.isNaN(v))
+                        return undefined;
+                      return parseFloat(v);
+                    },
                     validate: (
                       _,
                       { deal_discount_price, deal_normal_price },
@@ -147,7 +174,11 @@ export default function DetailsStep() {
                   {...register("deal_normal_price", {
                     required: "To pole jest wymagane",
                     min: { value: 0, message: "Cena nie może być ujemna" },
-                    valueAsNumber: true,
+                    setValueAs: (v) => {
+                      if (v === undefined || v === "" || Number.isNaN(v))
+                        return undefined;
+                      return parseFloat(v);
+                    },
                     validate: (
                       _,
                       { deal_discount_price, deal_normal_price },
@@ -288,4 +319,6 @@ export default function DetailsStep() {
       </main>
     </div>
   );
-}
+});
+
+export default DetailsStep;
