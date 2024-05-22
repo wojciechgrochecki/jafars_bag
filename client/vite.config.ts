@@ -12,6 +12,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ["merge-refs"],
+    exclude: ["merge-refs", "chunk-NXTG4QHP.js?v=272bd39e"],
   },
 });
