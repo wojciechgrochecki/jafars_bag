@@ -3,6 +3,7 @@ import HomePage from "@/pages/HomePage";
 import DealPage from "@/pages/DealPage";
 import LayoutWithNav from "./layouts/LayoutWithNav";
 import AddDealPage from "./pages/AddDealPage";
+import AccountPage from "./pages/AccountPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </Route>
         <Route path="okazja/:id" element={<DealPage />} />
         <Route path="dodaj-ogloszenie/*" element={<AddDealPage />} />
+        <Route path="konto" element={<AccountPage />} />
       </Routes>
     </>
   );
