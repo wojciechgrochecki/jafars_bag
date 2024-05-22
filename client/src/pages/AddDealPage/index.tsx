@@ -18,7 +18,7 @@ export const stepsLookup = [
   "/dodaj-ogloszenie/zdjecia",
 ];
 
-export default function FormLayout() {
+export default function AddDealPage() {
   const submitButtonRef = useRef<StepperRef>(null);
 
   const onStepChange = (navigateTo: string, nextStep: number) => {

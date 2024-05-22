@@ -6,7 +6,7 @@ import { AddDealForm, useFormContext } from "@/context/FormContext";
 import React, { useImperativeHandle } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { StepperRef } from "../FormLayout";
+import { StepperRef } from "..";
 
 type FormInputs = Pick<AddDealForm, "deal_description">;
 

@@ -8,7 +8,7 @@ import { useFormContext } from "@/context/FormContext";
 import React, { useImperativeHandle } from "react";
 import { useState } from "react";
 import { SortableEvent } from "sortablejs";
-import { StepperRef } from "../FormLayout";
+import { StepperRef } from "..";
 import { useNavigate } from "react-router-dom";
 
 const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { dummy_categories } from "@/components/forms/OfferFilters/CategorySelect";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
 import React, { useImperativeHandle } from "react";
-import { StepperRef } from "../FormLayout";
+import { StepperRef } from "..";
 
 type FormInputs = Pick<
   AddDealForm,

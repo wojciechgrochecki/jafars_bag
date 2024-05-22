@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import DealPage from "@/pages/DealPage";
 import LayoutWithNav from "./layouts/LayoutWithNav";
-import FormLayout from "./pages/AddDealPage/FormLayout";
+import AddDealPage from "./pages/AddDealPage";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           <Route index path="/" element={<HomePage />} />
         </Route>
         <Route path="okazja/:id" element={<DealPage />} />
-        <Route path="dodaj-ogloszenie/*" element={<FormLayout />} />
+        <Route path="dodaj-ogloszenie/*" element={<AddDealPage />} />
       </Routes>
     </>
   );

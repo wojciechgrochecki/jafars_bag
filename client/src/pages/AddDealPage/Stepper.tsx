@@ -2,7 +2,7 @@ import { useFormContext } from "@/context/FormContext";
 import { cn } from "@/utils/cn";
 import { IconChevronLeft } from "@tabler/icons-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { stepsLookup } from "./FormLayout";
+import { stepsLookup } from ".";
 import { useEffect } from "react";
 
 interface StepperProps {
