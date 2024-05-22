@@ -4,6 +4,8 @@ import DealPage from "@/pages/DealPage";
 import LayoutWithNav from "./layouts/LayoutWithNav";
 import AddDealPage from "./pages/AddDealPage";
 import AccountPage from "./pages/AccountPage";
+import MyDeals from "./pages/AccountPage/MyDeals";
+import SavedDeals from "./pages/AccountPage/SavedDeals";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         </Route>
         <Route path="okazja/:id" element={<DealPage />} />
         <Route path="dodaj-ogloszenie/*" element={<AddDealPage />} />
+        <Route path="konto/moje-okazje" element={<MyDeals />} />
+        <Route path="konto/zapisane-okazje" element={<SavedDeals />} />
       </Routes>
     </>
   );
