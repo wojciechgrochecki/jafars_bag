@@ -10,6 +10,7 @@ import {
   IconStar,
   IconTags,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 const AccountPage = () => {
   return (
@@ -42,17 +43,29 @@ const AccountPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4 [&>button]:max-w-[250px]">
-          <Button variant={"secondary"} className="h-fit w-full px-4 py-3">
-            <IconTags className="mr-2 h-5 w-5 text-accent-light" />
-            Moje okazje
+        <div className="flex flex-col items-center gap-4">
+          <Button
+            asChild
+            variant={"secondary"}
+            className="h-fit w-full max-w-[250px] px-4 py-3"
+          >
+            <Link to="/konto/moje-okazje">
+              <IconTags className="mr-2 h-5 w-5 text-accent-light" />
+              Moje okazje
+            </Link>
           </Button>
-          <Button variant={"secondary"} className="h-fit w-full px-4 py-3">
-            <IconStar className="mr-2 h-5 w-5 text-accent-light" />
-            Zapisane
+          <Button
+            asChild
+            variant={"secondary"}
+            className="h-fit w-full max-w-[250px] px-4 py-3"
+          >
+            <Link to={"/konto/zapisane-okazje"}>
+              <IconStar className="mr-2 h-5 w-5 text-accent-light" />
+              Zapisane
+            </Link>
           </Button>
           <hr className="mx-auto h-[2px] w-6 bg-slate-200" />
-          <Button className="h-fit w-full border border-rose-900/20 bg-white px-4 py-3 font-normal text-rose-900 hover:bg-rose-50 active:bg-white">
+          <Button className="h-fit w-full max-w-[250px] border border-rose-900/20 bg-white px-4 py-3 font-normal text-rose-900 hover:bg-rose-50 active:bg-white">
             <IconLogout className="mr-2 h-5 w-5" />
             Wyloguj się
           </Button>
