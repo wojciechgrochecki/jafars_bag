@@ -1,26 +1,38 @@
 import { useFormContext } from "@/context/FormContext";
 import { cn } from "@/utils/cn";
 import { IconChevronLeft } from "@tabler/icons-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { stepsLookup } from "./FormLayout";
+import { useEffect } from "react";
 
-export default function Stepper() {
+interface StepperProps {
+  onStepChange: (navigateTo: string, nextStep: number) => void;
+}
+
+export default function Stepper({ onStepChange }: StepperProps) {
   const { currentStep, highestStepReached, setNextStep } = useFormContext();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (currentStep == 1 && location.pathname !== stepsLookup[0])
+      navigate(stepsLookup[0]);
+  }, []);
 
   const handleNavButtonClick = () => {
-    setNextStep(currentStep - 1);
     switch (currentStep) {
       case 1:
+        setNextStep(1);
         navigate("/");
         break;
       case 2:
-        navigate("/dodaj-ogloszenie");
+        onStepChange(stepsLookup[0], 1);
         break;
       case 3:
-        navigate("szczegoly");
+        onStepChange(stepsLookup[1], 2);
         break;
       case 4:
-        navigate("opis");
+        onStepChange(stepsLookup[2], 3);
         break;
     }
   };
@@ -29,11 +41,11 @@ export default function Stepper() {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     destStep: number,
   ) => {
-    if (destStep > highestStepReached) {
-      e.preventDefault();
+    e.preventDefault();
+    if (destStep > highestStepReached || destStep == currentStep) {
       return;
     }
-    setNextStep(destStep);
+    onStepChange(stepsLookup[destStep - 1], destStep);
   };
 
   return (
