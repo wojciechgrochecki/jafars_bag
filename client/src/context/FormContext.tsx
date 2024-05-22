@@ -17,9 +17,9 @@ export interface AddDealForm {
 }
 
 const initialFormState: Partial<AddDealForm> = {
-  deal_link: undefined,
-  deal_title: undefined,
-  deal_description: undefined,
+  deal_link: "",
+  deal_title: "",
+  deal_description: "",
   deal_discount_price: undefined,
   deal_normal_price: undefined,
   deal_start_date: undefined,
