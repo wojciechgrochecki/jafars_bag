@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 function OfferExcerpt() {
   return (
     <Link
-      to={"okazja/1"}
+      to={"/okazja/1"}
       className="flex flex-col gap-3 rounded-lg bg-white p-3 shadow-ring"
     >
       <div className="flex flex-row gap-2">
