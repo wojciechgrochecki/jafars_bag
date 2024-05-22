@@ -11,10 +11,10 @@ function App() {
       <Routes>
         <Route element={<LayoutWithNav />}>
           <Route index path="/" element={<HomePage />} />
+          <Route path="konto" element={<AccountPage />} />
         </Route>
         <Route path="okazja/:id" element={<DealPage />} />
         <Route path="dodaj-ogloszenie/*" element={<AddDealPage />} />
-        <Route path="konto" element={<AccountPage />} />
       </Routes>
     </>
   );
