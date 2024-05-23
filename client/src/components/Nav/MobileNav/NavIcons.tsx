@@ -1,4 +1,5 @@
 import { cn } from "@/utils/cn";
+import React from "react";
 
 interface IconProps {
   active?: boolean;
@@ -25,10 +26,15 @@ function HomeIcon({ active = false, classes }: IconProps) {
   );
 }
 
-function SearchIcon({ active = false, classes }: IconProps) {
+const SearchIcon = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement> & IconProps
+>(({ active = false, classes, ...rest }, ref) => {
   return (
     <button
+      ref={ref}
       className={`cursor-pointer rounded-[13px] p-3 hover:bg-[#9352CC]/15 ${active && "bg-[#9352CC]/15 "}`}
+      {...rest}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +57,7 @@ function SearchIcon({ active = false, classes }: IconProps) {
       </svg>
     </button>
   );
-}
+});
 
 function BellIcon({ active = false, classes }: IconProps) {
   return (
