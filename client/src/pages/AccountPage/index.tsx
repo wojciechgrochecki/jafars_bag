@@ -1,7 +1,7 @@
 import TypographyH3 from "@/components/Typography/TypographyH3";
 import TypographyP from "@/components/Typography/TypographyP";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
-import { Button } from "@/components/buttons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
+import { Button } from "@/components/buttons/Button";
 import {
   IconBell,
   IconDotsVertical,

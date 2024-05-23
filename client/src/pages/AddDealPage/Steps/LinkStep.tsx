@@ -1,5 +1,5 @@
 import TypographyH2 from "@/components/Typography/TypographyH2";
-import { Button } from "@/components/buttons";
+import { Button } from "@/components/buttons/Button";
 import { Label } from "@/components/forms/Label";
 import { Input } from "@/components/forms/inputs/input";
 import { AddDealForm, useFormContext } from "@/context/FormContext";

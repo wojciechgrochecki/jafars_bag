@@ -1,15 +1,15 @@
 import TypographyH4 from "@/components/Typography/TypographyH4";
 import TypographyP from "@/components/Typography/TypographyP";
-import { Avatar, AvatarFallback, AvatarImage } from "@components/avatar";
-import { Button } from "@/components/buttons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
+import { Button } from "@/components/buttons/Button";
 import AddToFavButton from "@/components/buttons/AddToFavButton";
-import EndsIn from "../EndsIn";
-import PriceInfo from "../PriceInfo";
+import EndsIn from "./EndsIn";
+import PriceInfo from "./PriceInfo";
 import OfferImg from "./OfferImg";
 import { IconLink } from "@tabler/icons-react";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { IconCalendarClock } from "@tabler/icons-react";
-import VoteButton from "../VoteButton";
+import VoteButton from "./VoteButton";
 import { Link } from "react-router-dom";
 
 function OfferExcerpt() {

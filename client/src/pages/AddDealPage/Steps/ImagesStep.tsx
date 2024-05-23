@@ -1,7 +1,7 @@
 import TypographyH2 from "@/components/Typography/TypographyH2";
 import TypographyH4 from "@/components/Typography/TypographyH4";
-import { Button } from "@/components/buttons";
-import Draggable from "@/components/draggable/Draggable";
+import { Button } from "@/components/buttons/Button";
+import Draggable from "@/components/Draggable";
 import Dropzone from "@/components/forms/inputs/dropzone";
 import { ImagePreview } from "@/components/forms/inputs/dropzone/ImagePreview";
 import { useFormContext } from "@/context/FormContext";

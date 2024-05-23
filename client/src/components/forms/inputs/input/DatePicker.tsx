@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { IconCalendarPlus, IconCalendarCheck } from "@tabler/icons-react";
 import { pl } from "date-fns/locale";
 import { cn } from "@/utils/cn";
-import { Button } from "@components/buttons/index";
+import { Button } from "@/components/buttons/Button";
 import { Calendar } from "@/components/Calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
 import { Input } from ".";

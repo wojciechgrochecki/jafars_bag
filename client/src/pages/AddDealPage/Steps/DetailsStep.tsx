@@ -1,6 +1,6 @@
 import TypographyH2 from "@/components/Typography/TypographyH2";
 import TypographyH3 from "@/components/Typography/TypographyH3";
-import { Button } from "@/components/buttons";
+import { Button } from "@/components/buttons/Button";
 import { Label } from "@/components/forms/Label";
 import { CategorySelect } from "@/components/forms/OfferFilters/CategorySelect";
 import { Input } from "@/components/forms/inputs/input";

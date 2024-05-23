@@ -1,9 +1,9 @@
 import { Label } from "@radix-ui/react-label";
 import CloseButton from "@components/buttons/CloseButton";
-import { RadioGroup, RadioGroupItem } from "../inputs/radio";
+import { RadioGroup, RadioGroupItem } from "../inputs/Radio";
 import { Input } from "../inputs/input";
 import { CategorySelect } from "./CategorySelect";
-import { Button } from "@components/buttons";
+import { Button } from "@/components/buttons/Button";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconAdjustmentsHorizontal } from "@tabler/icons-react";
 
@@ -127,7 +127,7 @@ export function OfferFilters() {
               <h3 className="text-base font-medium text-slate-700">
                 Kategorie
               </h3>
-              <CategorySelect />
+              {/* <CategorySelect /> */}
             </div>
             <Button className="mt-auto h-10">Zapisz zmiany</Button>
           </form>

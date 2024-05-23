@@ -1,4 +1,4 @@
-import OfferExcerpt from "@components/Offer/OfferExcerpt";
+import OfferExcerpt from "@/components/Offer";
 
 function HomePage() {
   return (

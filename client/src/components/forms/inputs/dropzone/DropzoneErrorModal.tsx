@@ -8,8 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/dialog";
-import { Button } from "@/components/buttons";
+} from "@/components/Dialog";
+import { Button } from "@/components/buttons/Button";
 
 interface ModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

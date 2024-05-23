@@ -6,9 +6,9 @@ import TypographyH4 from "@/components/Typography/TypographyH4";
 import PriceInfo from "@/components/Offer/PriceInfo";
 import VoteButton from "@/components/Offer/VoteButton";
 import { IconCalendarClock, IconLink } from "@tabler/icons-react";
-import { Button } from "@/components/buttons";
+import { Button } from "@/components/buttons/Button";
 import TypographyP from "@/components/Typography/TypographyP";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
 import CommentSection from "./CommentsSection";
 
 function DealPage() {

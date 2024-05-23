@@ -1,12 +1,12 @@
 import { IconChevronLeft, IconHistory, IconSearch } from "@tabler/icons-react";
-import { SearchIcon } from "../Nav/MobileNav/NavIcons";
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from "../dialog";
-import { Input } from "../forms/inputs/input";
+import { SearchIcon } from "./nav/MobileNav/NavIcons";
+import { Dialog, DialogClose, DialogContent, DialogTrigger } from "./Dialog";
+import { Input } from "./forms/inputs/input";
 import { useState } from "react";
-import CloseButton from "../buttons/CloseButton";
-import TypographyH4 from "../Typography/TypographyH4";
-import OfferImg from "../Offer/OfferExcerpt/OfferImg";
-import PriceInfo from "../Offer/PriceInfo";
+import CloseButton from "./buttons/CloseButton";
+import TypographyH4 from "./Typography/TypographyH4";
+import OfferImg from "./Offer/OfferImg";
+import PriceInfo from "./Offer/PriceInfo";
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");

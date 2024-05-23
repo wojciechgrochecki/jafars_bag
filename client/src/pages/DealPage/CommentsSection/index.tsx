@@ -1,4 +1,4 @@
-import { Button } from "@/components/buttons";
+import { Button } from "@/components/buttons/Button";
 import Comment from "./Comment";
 import DealResponse from "./DealResponse";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import AddOfferButton from "@components/buttons/AddOfferButton";
 import { BellIcon, HomeIcon, UserIcon } from "./NavIcons";
 import { NavLink } from "react-router-dom";
-import SearchBar from "@/components/search-bar";
+import SearchBar from "@/components/SearchBar";
 
 function MobileNav() {
   return (

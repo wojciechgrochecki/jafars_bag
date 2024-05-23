@@ -1,4 +1,4 @@
-import { Button } from ".";
+import { Button } from "./Button";
 import { IconX } from "@tabler/icons-react";
 
 export interface ButtonProps

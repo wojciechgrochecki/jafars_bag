@@ -1,7 +1,7 @@
 import TypographyH2 from "@/components/Typography/TypographyH2";
-import { Button } from "@/components/buttons";
+import { Button } from "@/components/buttons/Button";
 import { Label } from "@/components/forms/Label";
-import { Textarea } from "@/components/forms/inputs/textarea";
+import Textarea from "@/components/forms/inputs/TextArea";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
 import React, { useImperativeHandle } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

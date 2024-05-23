@@ -1,4 +1,4 @@
-import MobileNav from "@/components/Nav/MobileNav";
+import MobileNav from "@/components/nav/MobileNav";
 import { Outlet } from "react-router-dom";
 
 export default function LayoutWithNav() {

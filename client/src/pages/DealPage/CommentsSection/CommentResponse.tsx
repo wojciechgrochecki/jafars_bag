@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
-import { Button } from "@/components/buttons";
-import { Textarea } from "@/components/forms/inputs/textarea";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
+import { Button } from "@/components/buttons/Button";
+import Textarea from "@/components/forms/inputs/TextArea";
 
 interface CommentResponseProps {
   onCancel: () => void;
