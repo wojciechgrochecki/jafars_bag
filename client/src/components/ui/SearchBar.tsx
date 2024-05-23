@@ -1,7 +1,7 @@
 import { IconChevronLeft, IconHistory, IconSearch } from "@tabler/icons-react";
 import { SearchIcon } from "../nav/MobileNav/NavIcons";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "./Dialog";
-import { Input } from "../forms/inputs/input";
+import Input from "../forms/inputs/Input";
 import { useState } from "react";
 import CloseButton from "./buttons/CloseButton";
 import TypographyH4 from "../typography/TypographyH4";

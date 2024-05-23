@@ -1,7 +1,7 @@
 import TypographyH2 from "@/components/typography/TypographyH2";
 import { Button } from "@/components/ui/buttons/Button";
 import Label from "@/components/forms/Label";
-import { Input } from "@/components/forms/inputs/input";
+import Input from "@/components/forms/inputs/Input";
 import { AddDealForm, useFormContext } from "@/context/FormContext";
 import { IconLink } from "@tabler/icons-react";
 import React, { useImperativeHandle } from "react";

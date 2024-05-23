@@ -1,7 +1,7 @@
 import { Label } from "@radix-ui/react-label";
 import CloseButton from "@/components/ui/buttons/CloseButton";
 import { RadioGroup, RadioGroupItem } from "../inputs/Radio";
-import { Input } from "../inputs/input";
+import { Input } from "../inputs/input/Input";
 import { CategorySelect } from "./CategorySelect";
 import { Button } from "@/components/ui/buttons/Button";
 import * as Dialog from "@radix-ui/react-dialog";

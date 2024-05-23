@@ -4,13 +4,13 @@ import { IconCalendarPlus, IconCalendarCheck } from "@tabler/icons-react";
 import { pl } from "date-fns/locale";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui/buttons/Button";
-import { Calendar } from "@/components/ui/Calendar";
+import Calendar from "@/components/ui/Calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/Popover";
-import { Input } from ".";
+import Input from "./Input";
 
 type DatePickerProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   selected: Date | undefined;
@@ -109,4 +109,4 @@ const DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(
   },
 );
 
-export { DatePicker };
+export default DatePicker;
