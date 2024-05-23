@@ -1,6 +1,6 @@
 import TypographyP from "@/components/Typography/TypographyP";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
-import { Button } from "@/components/buttons/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
+import { Button } from "@/components/ui/buttons/Button";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import CommentResponse from "./CommentResponse";
 import { useState } from "react";

@@ -1,9 +1,9 @@
 import { Label } from "@radix-ui/react-label";
-import CloseButton from "@components/buttons/CloseButton";
+import CloseButton from "@/components/ui/buttons/CloseButton";
 import { RadioGroup, RadioGroupItem } from "../inputs/Radio";
 import { Input } from "../inputs/input";
 import { CategorySelect } from "./CategorySelect";
-import { Button } from "@/components/buttons/Button";
+import { Button } from "@/components/ui/buttons/Button";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconAdjustmentsHorizontal } from "@tabler/icons-react";
 

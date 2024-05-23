@@ -1,4 +1,4 @@
-import AddToFavButton from "@/components/buttons/AddToFavButton";
+import AddToFavButton from "@/components/ui/buttons/AddToFavButton";
 import { IconChevronLeft } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 

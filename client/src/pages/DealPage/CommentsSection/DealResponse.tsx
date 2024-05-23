@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar";
-import { Button } from "@/components/buttons/Button";
-import Textarea from "@/components/forms/inputs/TextArea";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
+import { Button } from "@/components/ui/buttons/Button";
+import Textarea from "@/components/form/input/TextArea";
 
 interface DealResponseProps {
   onCancel: () => void;

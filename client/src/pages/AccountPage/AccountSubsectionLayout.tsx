@@ -1,4 +1,4 @@
-import TopMobileNav from "@/components/TopMobileNav";
+import TopMobileNav from "@/components/ui/TopMobileNav";
 
 type LayoutProps = React.ComponentPropsWithoutRef<typeof TopMobileNav> & {
   children: React.ReactNode;
