@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import DealLocalNav from "./DealLocalNav";
-import Carousel from "./Carousel";
+import Carousel from "./carousel";
 import ExpiryBanner from "./ExpiryBanner";
-import TypographyH4 from "@/components/Typography/TypographyH4";
-import PriceInfo from "@/components/Offer/PriceInfo";
-import VoteButton from "@/components/Offer/VoteButton";
+import TypographyH4 from "@/components/typography/TypographyH4";
+import PriceInfo from "@/components/offer/PriceInfo";
+import VoteButton from "@/components/offer/VoteButton";
 import { IconCalendarClock, IconLink } from "@tabler/icons-react";
 import { Button } from "@/components/ui/buttons/Button";
-import TypographyP from "@/components/Typography/TypographyP";
+import TypographyP from "@/components/typography/TypographyP";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import CommentSection from "./CommentsSection";
+import CommentSection from "./comment-section";
 
 function DealPage() {
   const { _id } = useParams();

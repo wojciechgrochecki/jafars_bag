@@ -1,6 +1,6 @@
 import { IconDots } from "@tabler/icons-react";
 import AccountSubsectionLayout from "./AccountSubsectionLayout";
-import OfferExcerpt from "@/components/Offer";
+import OfferExcerpt from "@/components/offer";
 
 const MyDeals = () => {
   return (

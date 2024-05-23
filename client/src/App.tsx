@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
-import DealPage from "@/pages/DealPage";
+import DealPage from "@/pages/deal-page";
 import LayoutWithNav from "./layouts/LayoutWithNav";
-import AddDealPage from "./pages/AddDealPage";
-import AccountPage from "./pages/AccountPage";
-import MyDeals from "./pages/AccountPage/MyDeals";
-import SavedDeals from "./pages/AccountPage/SavedDeals";
+import AddDealPage from "./pages/add-deal-page";
+import AccountPage from "./pages/account-page";
+import MyDeals from "./pages/account-page/MyDeals";
+import SavedDeals from "./pages/account-page/SavedDeals";
 
 function App() {
   return (

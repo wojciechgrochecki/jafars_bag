@@ -4,9 +4,9 @@ import { Dialog, DialogClose, DialogContent, DialogTrigger } from "./Dialog";
 import { Input } from "../forms/inputs/input";
 import { useState } from "react";
 import CloseButton from "./buttons/CloseButton";
-import TypographyH4 from "../Typography/TypographyH4";
-import OfferImg from "../Offer/OfferImg";
-import PriceInfo from "../Offer/PriceInfo";
+import TypographyH4 from "../typography/TypographyH4";
+import OfferImg from "../offer/OfferImg";
+import PriceInfo from "../offer/PriceInfo";
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");

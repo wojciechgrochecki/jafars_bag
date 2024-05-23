@@ -1,5 +1,5 @@
-import TypographyH4 from "@/components/Typography/TypographyH4";
-import TypographyP from "@/components/Typography/TypographyP";
+import TypographyH4 from "@/components/typography/TypographyH4";
+import TypographyP from "@/components/typography/TypographyP";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/buttons/Button";
 import AddToFavButton from "@/components/ui/buttons/AddToFavButton";
