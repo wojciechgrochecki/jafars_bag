@@ -59,10 +59,15 @@ const SearchIcon = React.forwardRef<
   );
 });
 
-function BellIcon({ active = false, classes }: IconProps) {
+const BellIcon = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement> & IconProps
+>(({ active = false, classes, ...rest }, ref) => {
   return (
     <button
+      ref={ref}
       className={`cursor-pointer rounded-[13px] p-3 hover:bg-[#9352CC]/15 ${active && "bg-[#9352CC]/15 "}`}
+      {...rest}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +95,7 @@ function BellIcon({ active = false, classes }: IconProps) {
       </svg>
     </button>
   );
-}
+});
 
 function UserIcon({ active = false, classes }: IconProps) {
   return (
