@@ -1,4 +1,4 @@
-import TypographyH2 from "@/components/typography/TypographyH2";
+import TypographyH2 from "@/components/ui/typography/TypographyH2";
 import { Button } from "@/components/ui/buttons/Button";
 import Label from "@/components/forms/Label";
 import Textarea from "@/components/forms/inputs/TextArea";

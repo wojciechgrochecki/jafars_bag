@@ -1,5 +1,5 @@
-import TypographyH2 from "@/components/typography/TypographyH2";
-import TypographyH4 from "@/components/typography/TypographyH4";
+import TypographyH2 from "@/components/ui/typography/TypographyH3";
+import TypographyH4 from "@/components/ui/typography/TypographyH4";
 import { Button } from "@/components/ui/buttons/Button";
 import Draggable from "@/components/ui/Draggable";
 import Dropzone from "@/components/forms/inputs/dropzone";

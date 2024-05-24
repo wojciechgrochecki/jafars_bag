@@ -4,7 +4,7 @@ import { Dialog, DialogClose, DialogContent, DialogTrigger } from "./Dialog";
 import Input from "../forms/inputs/Input";
 import { useState } from "react";
 import CloseButton from "./buttons/CloseButton";
-import TypographyH4 from "../typography/TypographyH4";
+import TypographyH4 from "./typography/TypographyH4";
 import OfferImg from "../offer/OfferImg";
 import PriceInfo from "../offer/PriceInfo";
 

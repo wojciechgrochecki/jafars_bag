@@ -1,4 +1,4 @@
-import TypographyP from "@/components/typography/TypographyP";
+import TypographyP from "@/components/ui/typography/TypographyP";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/buttons/Button";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";

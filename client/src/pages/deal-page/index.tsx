@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import DealLocalNav from "./DealLocalNav";
 import Carousel from "./carousel";
 import ExpiryBanner from "./ExpiryBanner";
-import TypographyH4 from "@/components/typography/TypographyH4";
+import TypographyH4 from "@/components/ui/typography/TypographyH4";
+import TypographyP from "@/components/ui/typography/TypographyP";
 import PriceInfo from "@/components/offer/PriceInfo";
 import VoteButton from "@/components/offer/VoteButton";
 import { IconCalendarClock, IconLink } from "@tabler/icons-react";
 import { Button } from "@/components/ui/buttons/Button";
-import TypographyP from "@/components/typography/TypographyP";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
 import CommentSection from "./comment-section";
 
