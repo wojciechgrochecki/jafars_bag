@@ -78,25 +78,43 @@ const DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(
                 <Input
                   type="number"
                   step={1}
-                  min={0}
                   max={23}
                   className="h-9 w-0 flex-1"
                   placeholder="12"
-                  value={selected?.getHours() ?? 0}
-                  onChange={(e) => setTime(e.target.value, "H")}
+                  defaultValue={selected?.getHours()}
+                  onChange={(e) => {
+                    if (e.target.value === "") {
+                      setTime("0", "H");
+                    } else {
+                      const hours = Math.min(
+                        Math.max(+e.target.value, 0),
+                        23,
+                      ).toString();
+                      e.target.value = hours;
+                      setTime(hours, "H");
+                    }
+                  }}
                   disabled={!selected}
                 />
                 <span className="text-slate-400">:</span>
                 <Input
                   type="number"
                   step={1}
-                  min={0}
                   max={59}
                   className="h-9 w-0 flex-1"
                   placeholder="00"
-                  value={selected?.getMinutes() ?? 0}
-                  onChange={({ target: { value } }) => {
-                    setTime(value, "M");
+                  defaultValue={selected?.getMinutes()}
+                  onChange={(e) => {
+                    if (e.target.value === "") {
+                      setTime("0", "M");
+                    } else {
+                      const minutes = Math.min(
+                        Math.max(+e.target.value, 0),
+                        59,
+                      ).toString();
+                      e.target.value = minutes;
+                      setTime(minutes, "M");
+                    }
                   }}
                   disabled={!selected}
                 />
