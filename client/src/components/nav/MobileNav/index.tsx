@@ -1,7 +1,8 @@
 import AddOfferButton from "@/components/ui/buttons/AddOfferButton";
-import { BellIcon, HomeIcon, UserIcon } from "./NavIcons";
+import { HomeIcon, UserIcon } from "./NavIcons";
 import { NavLink } from "react-router-dom";
 import SearchBar from "@/components/ui/SearchBar";
+import Notifications from "@/components/notifications";
 
 function MobileNav() {
   return (
@@ -15,7 +16,7 @@ function MobileNav() {
         <NavLink to="/dodaj-ogloszenie" end className={"contents"}>
           <AddOfferButton className="relative bottom-1/3 transition hover:scale-110" />
         </NavLink>
-        <BellIcon />
+        <Notifications />
         <NavLink to="/konto">
           {({ isActive }) => <UserIcon active={isActive} />}
         </NavLink>
