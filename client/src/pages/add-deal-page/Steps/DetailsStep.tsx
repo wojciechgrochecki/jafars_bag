@@ -292,19 +292,28 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
             <Controller
               control={control}
               name="deal_category_id"
-              rules={{ required: "Dodawana okazja musi mieć kategorię" }}
+              rules={{
+                validate: (value) => {
+                  console.log(value);
+                  if (value === -1)
+                    return "Dodawana okazja musi mieć kategorię";
+                  return true;
+                },
+              }}
               render={({ field: { onChange, value, ref } }) => {
-                const handleSelection = (id: number, isChecked: boolean) => {
-                  if (value == id && !isChecked) onChange(undefined);
-                  else onChange(id);
+                const handleCategorySelect = (id: number) => {
+                  if (value !== -1) {
+                    onChange(-1);
+                  } else onChange(id);
                 };
 
                 return (
                   <CategorySelect
                     ref={ref}
-                    onCheckedChange={handleSelection}
-                    selection={value}
                     categories={dummy_categories}
+                    selection={value}
+                    onCheckedChange={handleCategorySelect}
+                    singleMode
                   />
                 );
               }}

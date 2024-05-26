@@ -1,13 +1,24 @@
 import { Label } from "@radix-ui/react-label";
 import CloseButton from "@/components/ui/buttons/CloseButton";
 import { RadioGroup, RadioGroupItem } from "../inputs/Radio";
-import { Input } from "../inputs/input/Input";
-import { CategorySelect } from "./CategorySelect";
+import Input from "../inputs/Input";
+import { CategorySelect, dummy_categories } from "./CategorySelect";
 import { Button } from "@/components/ui/buttons/Button";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconAdjustmentsHorizontal } from "@tabler/icons-react";
+import { useState } from "react";
 
 export function OfferFilters() {
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+
+  const handleCategorySelect = (id: number) => {
+    if (selectedCategories.includes(id)) {
+      setSelectedCategories((prev) => prev.filter((s) => s !== id));
+    } else {
+      setSelectedCategories((prev) => [...prev, id]);
+    }
+  };
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -127,7 +138,12 @@ export function OfferFilters() {
               <h3 className="text-base font-medium text-slate-700">
                 Kategorie
               </h3>
-              {/* <CategorySelect /> */}
+              <CategorySelect
+                categories={dummy_categories}
+                selection={selectedCategories}
+                onCheckedChange={handleCategorySelect}
+                singleMode={false}
+              />
             </div>
             <Button className="mt-auto h-10">Zapisz zmiany</Button>
           </form>
