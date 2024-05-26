@@ -35,7 +35,6 @@ const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
   useImperativeHandle(
     ref,
     () => {
-      console.log("reconstruct");
       return {
         validateAndStep(navigateTo, nextStep) {
           setFormState({ deal_images: files });
