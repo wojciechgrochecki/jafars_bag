@@ -1,3 +1,4 @@
+import { OfferFilters } from "@/components/forms/offer-filters";
 import OfferExcerpt from "@/components/offer";
 
 function HomePage() {
@@ -7,6 +8,7 @@ function HomePage() {
       <OfferExcerpt />
       <OfferExcerpt />
       <OfferExcerpt />
+      <OfferFilters />
     </main>
   );
 }
