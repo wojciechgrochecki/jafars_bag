@@ -1,32 +1,51 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { IconCircleCheck, IconCirclePlus } from "@tabler/icons-react";
-import { ReactNode, forwardRef } from "react";
+import { forwardRef } from "react";
 
 type CategorySelectProps = {
   readonly categories: Category[];
-  onCheckedChange: (id: number, checked: boolean) => void;
-  selection: number | undefined;
+  onCheckedChange: (id: number) => void;
+} & (SingleModeProps | MultipleModeProps);
+
+type SingleModeProps = {
+  singleMode: true;
+  selection: number;
+};
+
+type MultipleModeProps = {
+  singleMode: false;
+  selection: number[];
 };
 const CategorySelect = forwardRef<HTMLDivElement, CategorySelectProps>(
-  ({ categories, onCheckedChange, selection }, ref) => {
-    let content: ReactNode;
-    if (selection) {
-      const category = categories.find((cat) => cat.id == selection)!;
-      content = (
-        <CategoryCheckbox
-          description={category.description}
-          id={category.id}
-          isChecked={true}
-          onChange={onCheckedChange}
-        />
-      );
+  ({ categories, onCheckedChange, selection, singleMode = false }, ref) => {
+    let content: React.ReactNode;
+
+    if (singleMode) {
+      if (selection !== -1) {
+        const cat: Category = categories.find((c) => c.id == selection)!;
+        content = (
+          <CategoryCheckbox
+            {...cat}
+            isChecked={true}
+            onChange={onCheckedChange}
+          />
+        );
+      } else {
+        content = categories.map((cat) => (
+          <CategoryCheckbox
+            key={cat.id}
+            {...cat}
+            isChecked={false}
+            onChange={onCheckedChange}
+          />
+        ));
+      }
     } else {
       content = categories.map((cat) => (
         <CategoryCheckbox
           key={cat.id}
-          description={cat.description}
-          id={cat.id}
-          isChecked={false}
+          {...cat}
+          isChecked={(selection as number[]).includes(cat.id)!}
           onChange={onCheckedChange}
         />
       ));
@@ -45,7 +64,7 @@ const CategorySelect = forwardRef<HTMLDivElement, CategorySelectProps>(
 );
 
 interface CheckboxProps {
-  onChange: (id: number, checked: boolean) => void;
+  onChange: (id: number) => void;
   description: string;
   isChecked: boolean;
   id: number;
@@ -60,10 +79,7 @@ const CategoryCheckbox = ({
   return (
     <CheckboxPrimitive.Root
       checked={isChecked}
-      onCheckedChange={(val) => {
-        console.log("selected checkbox id", id);
-        onChange(id, val == true);
-      }}
+      onCheckedChange={() => onChange(id)}
       value={id}
       className="flex h-fit flex-row items-center gap-1
    rounded-full border border-slate-400 bg-white px-2 py-[6px] text-sm font-normal text-slate-800
