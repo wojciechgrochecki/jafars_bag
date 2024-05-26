@@ -24,7 +24,7 @@ const initialFormState: Partial<AddDealForm> = {
   deal_normal_price: undefined,
   deal_start_date: undefined,
   deal_end_date: undefined,
-  deal_category_id: undefined,
+  deal_category_id: -1,
   deal_images: [],
 };
 
