@@ -1,13 +1,21 @@
 import { Button } from "@/components/ui/buttons/Button";
 import Comment from "./Comment";
 import DealResponse from "./DealResponse";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function CommentSection() {
   const [showResponse, setShowResponse] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    const section = document.getElementById(location.hash.slice(1));
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
 
   return (
-    <section>
+    <div id="komentarze">
       <div className="flex w-full items-center justify-between gap-2 px-4 py-4 text-base font-medium text-slate-800">
         <span>
           Komentarze
@@ -30,6 +38,6 @@ export default function CommentSection() {
         <Comment />
         <hr className="border-slate-30 last-of-type:hidden" />
       </div>
-    </section>
+    </div>
   );
 }

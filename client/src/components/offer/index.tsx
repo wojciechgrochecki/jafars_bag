@@ -10,9 +10,10 @@ import { IconLink } from "@tabler/icons-react";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { IconCalendarClock } from "@tabler/icons-react";
 import VoteButton from "./VoteButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function OfferExcerpt() {
+  const navigate = useNavigate();
   return (
     <Link
       to={"/okazja/1"}
@@ -57,11 +58,17 @@ function OfferExcerpt() {
           </div>
         </div>
         <div className="flex flex-row items-center justify-center gap-2">
-          <Button variant={"comment"}>
+          <Button
+            variant={"comment"}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("okazja/1#komentarze");
+            }}
+          >
             <ChatBubbleLeftRightIcon className="h-5 w-5 text-slate-700" />
             12
           </Button>
-          <VoteButton />
+          <VoteButton votesCount={25} />
         </div>
       </div>
     </Link>
