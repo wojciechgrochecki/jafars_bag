@@ -31,7 +31,7 @@ function DealPage() {
           </span>
           <div className="mt-1 flex w-full flex-row items-center justify-between">
             <PriceInfo normalPrice={900} discountPrice={1099} />
-            <VoteButton />
+            <VoteButton votesCount={5} />
           </div>
         </div>
         <Button className="h-fit w-full py-3 text-base font-medium">

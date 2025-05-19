@@ -19,7 +19,7 @@ export default function DealResponse({ onCancel }: DealResponseProps) {
           <Button onClick={onCancel} variant={"secondary"}>
             Odrzuć
           </Button>
-          <Button>Wyślij</Button>
+          <Button>Dodaj</Button>
         </div>
       </div>
     </div>
