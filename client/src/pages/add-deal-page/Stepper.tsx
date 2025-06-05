@@ -139,7 +139,7 @@ function Step({
       >
         <div
           className={cn(
-            `h-[6px] w-full items-center justify-center rounded-full bg-purple-200 text-accent lg:flex lg:h-[60px] lg:w-[60px] lg:shrink-0 lg:border lg:border-accent lg:bg-transparent`,
+            `h-[8px] w-full items-center justify-center rounded-full bg-purple-200 text-accent lg:flex lg:h-[60px] lg:w-[60px] lg:shrink-0 lg:border lg:border-accent lg:bg-transparent`,
             {
               "!bg-accent text-white": isComplete,
             },

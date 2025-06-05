@@ -55,7 +55,7 @@ const CategorySelect = forwardRef<HTMLDivElement, CategorySelectProps>(
       <div
         ref={ref}
         tabIndex={-1}
-        className="flex h-fit min-h-36 w-full flex-wrap content-start items-start gap-2"
+        className="flex h-fit w-full flex-wrap content-start items-start gap-2"
       >
         {content}
       </div>
@@ -81,7 +81,7 @@ const CategoryCheckbox = ({
       checked={isChecked}
       onCheckedChange={() => onChange(id)}
       value={id}
-      className="flex h-fit flex-row items-center gap-1
+      className="flex h-fit cursor-pointer flex-row items-center gap-1
    rounded-full border border-slate-400 bg-white px-2 py-[6px] text-sm font-normal text-slate-800
     transition-transform active:scale-95 data-[state=checked]:bg-accent data-[state=checked]:text-white"
     >

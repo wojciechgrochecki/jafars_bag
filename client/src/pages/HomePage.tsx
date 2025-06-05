@@ -8,6 +8,7 @@ function HomePage() {
       <OfferExcerpt />
       <OfferExcerpt />
       <OfferExcerpt />
+
       <OfferFilters />
     </main>
   );

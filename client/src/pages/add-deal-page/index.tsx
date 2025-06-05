@@ -21,14 +21,14 @@ export const stepsLookup = [
 export default function AddDealPage() {
   const submitButtonRef = useRef<StepperRef>(null);
 
-  const onStepChange = (navigateTo: string, nextStep: number) => {
+  const handleStepChange = (navigateTo: string, nextStep: number) => {
     submitButtonRef.current?.validateAndStep(navigateTo, nextStep);
   };
 
   return (
-    <div className="flex h-fit min-h-screen flex-col gap-8 bg-white px-4 py-3">
+    <div className="flex h-fit min-h-screen flex-col gap-8 bg-slate-50 px-4 py-3 lg:flex-row lg:px-8 lg:py-14">
       <FormContextProvider>
-        <Stepper onStepChange={onStepChange} />
+        <Stepper onStepChange={handleStepChange} />
         <Routes>
           <Route index element={<LinkStep ref={submitButtonRef} />} />
           <Route
