@@ -1,4 +1,4 @@
-import TypographyH2 from "@/components/ui/typography/TypographyH3";
+import TypographyH2 from "@/components/ui/typography/TypographyH2";
 import TypographyH4 from "@/components/ui/typography/TypographyH4";
 import { Button } from "@/components/ui/buttons/Button";
 import Draggable from "@/components/ui/Draggable";
@@ -47,7 +47,7 @@ const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
   );
 
   return (
-    <div className="flex max-w-3xl flex-col items-center gap-8 pb-20">
+    <div className="lg:shadow-card flex flex-col items-center gap-8 rounded-2xl border-none pb-20 lg:flex lg:h-fit lg:flex-grow lg:gap-12 lg:bg-white lg:p-8">
       <header>
         <TypographyH2 className="text-center">Zdjęcia</TypographyH2>
         <p className="font-base mt-2 text-center text-slate-500">
@@ -70,8 +70,11 @@ const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
               ))}
             </Draggable>
           </div>
-          <div className="fixed bottom-0 left-0 z-10 w-full border border-slate-300 bg-white p-4">
-            <Button type="submit" className="h-fit w-full py-3">
+          <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4 lg:static lg:!mt-12 lg:border-none lg:p-0">
+            <Button
+              type="submit"
+              className="h-fit w-full py-3 lg:ml-auto lg:w-fit lg:px-4"
+            >
               Następny krok
             </Button>
           </div>

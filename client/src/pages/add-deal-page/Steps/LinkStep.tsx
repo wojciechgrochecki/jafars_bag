@@ -51,7 +51,7 @@ const LinkStep = React.forwardRef<StepperRef>((_props, ref) => {
   );
 
   return (
-    <div className="flex flex-col items-center gap-8 pb-20">
+    <div className="lg:shadow-card flex flex-col items-center gap-8 rounded-2xl border-none pb-20 lg:flex lg:h-fit lg:flex-grow lg:gap-12 lg:bg-white lg:p-8">
       <header>
         <TypographyH2 className="text-center">Link</TypographyH2>
         <p className="font-base mt-2 text-center text-slate-500">
@@ -59,7 +59,11 @@ const LinkStep = React.forwardRef<StepperRef>((_props, ref) => {
         </p>
       </header>
       <main className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)} className="h-full" noValidate>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="h-full lg:space-y-12"
+          noValidate
+        >
           <div className="space-y-1">
             <Label htmlFor="deal_link">
               Link do okazji
@@ -91,8 +95,11 @@ const LinkStep = React.forwardRef<StepperRef>((_props, ref) => {
               </p>
             )}
           </div>
-          <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4">
-            <Button type="submit" className="h-fit w-full py-3">
+          <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4 lg:static lg:border-none lg:p-0">
+            <Button
+              type="submit"
+              className="h-fit w-full py-3 lg:ml-auto lg:w-fit lg:px-4"
+            >
               Następny krok
             </Button>
           </div>

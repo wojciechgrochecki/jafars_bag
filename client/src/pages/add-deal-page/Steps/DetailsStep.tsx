@@ -77,7 +77,7 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
   };
 
   return (
-    <div className="flex max-w-lg flex-col items-center gap-8 pb-20">
+    <div className="lg:shadow-card flex flex-col items-center gap-8 rounded-2xl border-none pb-20 lg:flex lg:h-fit lg:flex-grow lg:gap-12 lg:bg-white lg:p-8">
       <header>
         <TypographyH2 className="text-center">Szczegóły okazji</TypographyH2>
         <p className="font-base mt-2 text-center text-slate-500">
@@ -87,7 +87,7 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
       <main className="w-full">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="h-fit min-h-full space-y-6"
+          className="h-fit min-h-full space-y-6 lg:h-fit"
         >
           <div className="space-y-1">
             <Label htmlFor="deal_title">
@@ -117,102 +117,104 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
             <TypographyH3>
               Cena<span className="font-normal text-slate-400">*</span>
             </TypographyH3>
-            <div className="space-y-1">
-              <Label htmlFor="deal_discount_price">Cena okazyjna</Label>
-              <div className="relative">
-                <Input
-                  type="number"
-                  id="deal_discount_price"
-                  placeholder="0,00"
-                  className="pl-14"
-                  step=".01"
-                  invalid={!!errors.deal_discount_price}
-                  {...register("deal_discount_price", {
-                    required: "To pole jest wymagane",
-                    min: { value: 0, message: "Cena nie może być ujemna" },
-                    setValueAs: (v) => {
-                      if (v === undefined || v === "" || Number.isNaN(v))
-                        return undefined;
-                      return parseFloat(v);
-                    },
-                    validate: (
-                      _,
-                      { deal_discount_price, deal_normal_price },
-                    ) => {
-                      if (
-                        deal_normal_price != undefined &&
-                        deal_discount_price <= deal_normal_price
-                      ) {
-                        clearErrors("deal_normal_price");
+            <div className="contents flex-row gap-4 lg:flex">
+              <div className="space-y-1 lg:inline-block lg:max-w-64">
+                <Label htmlFor="deal_discount_price">Cena okazyjna</Label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    id="deal_discount_price"
+                    placeholder="0,00"
+                    className="pl-14"
+                    step=".01"
+                    invalid={!!errors.deal_discount_price}
+                    {...register("deal_discount_price", {
+                      required: "To pole jest wymagane",
+                      min: { value: 0, message: "Cena nie może być ujemna" },
+                      setValueAs: (v) => {
+                        if (v === undefined || v === "" || Number.isNaN(v))
+                          return undefined;
+                        return parseFloat(v);
+                      },
+                      validate: (
+                        _,
+                        { deal_discount_price, deal_normal_price },
+                      ) => {
+                        if (
+                          deal_normal_price != undefined &&
+                          deal_discount_price <= deal_normal_price
+                        ) {
+                          clearErrors("deal_normal_price");
+                          return true;
+                        } else if (deal_discount_price > deal_normal_price)
+                          return "Okazyjna cena powinna być niższa niż zwykła";
                         return true;
-                      } else if (deal_discount_price > deal_normal_price)
-                        return "Okazyjna cena powinna być niższa niż zwykła";
-                      return true;
-                    },
-                  })}
-                />
-                <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center text-slate-400">
-                  PLN
-                </span>
-              </div>
-              {errors.deal_discount_price?.message && (
-                <p className="text-[12px] text-red-500">
-                  {errors.deal_discount_price.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="deal_normal_price">Cena przed obniżką</Label>
-              <div className="relative">
-                <Input
-                  type="number"
-                  id="deal_normal_price"
-                  placeholder="0,00"
-                  step=".01"
-                  className="pl-14 pr-20"
-                  invalid={!!errors.deal_normal_price}
-                  {...register("deal_normal_price", {
-                    required: "To pole jest wymagane",
-                    min: { value: 0, message: "Cena nie może być ujemna" },
-                    setValueAs: (v) => {
-                      if (v === undefined || v === "" || Number.isNaN(v))
-                        return undefined;
-                      return parseFloat(v);
-                    },
-                    validate: (
-                      _,
-                      { deal_discount_price, deal_normal_price },
-                    ) => {
-                      if (
-                        deal_discount_price != undefined &&
-                        deal_discount_price <= deal_normal_price
-                      ) {
-                        clearErrors("deal_discount_price");
-                        return true;
-                      } else if (deal_discount_price > deal_normal_price)
-                        return "Zwykła cena powinna być wyższa niż okazyjna";
-                      return true;
-                    },
-                  })}
-                />
-                <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center text-slate-400">
-                  PLN
-                </span>
-                {discount_price < normal_price && (
-                  <span className="pointer-events-none absolute bottom-0 right-1 top-0 my-auto h-fit rounded-md bg-accent-light px-2 py-1 text-sm font-semibold text-white">
-                    -
-                    {Math.round(
-                      ((normal_price - discount_price) / normal_price) * 100,
-                    )}
-                    %
+                      },
+                    })}
+                  />
+                  <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center text-slate-400">
+                    PLN
                   </span>
+                </div>
+                {errors.deal_discount_price?.message && (
+                  <p className="text-[12px] text-red-500">
+                    {errors.deal_discount_price.message}
+                  </p>
                 )}
               </div>
-              {errors.deal_normal_price?.message && (
-                <p className="text-[12px] text-red-500">
-                  {errors.deal_normal_price.message}
-                </p>
-              )}
+              <div className="space-y-1 lg:ml-4 lg:inline-block lg:max-w-64">
+                <Label htmlFor="deal_normal_price">Cena przed obniżką</Label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    id="deal_normal_price"
+                    placeholder="0,00"
+                    step=".01"
+                    className="pl-14 pr-20"
+                    invalid={!!errors.deal_normal_price}
+                    {...register("deal_normal_price", {
+                      required: "To pole jest wymagane",
+                      min: { value: 0, message: "Cena nie może być ujemna" },
+                      setValueAs: (v) => {
+                        if (v === undefined || v === "" || Number.isNaN(v))
+                          return undefined;
+                        return parseFloat(v);
+                      },
+                      validate: (
+                        _,
+                        { deal_discount_price, deal_normal_price },
+                      ) => {
+                        if (
+                          deal_discount_price != undefined &&
+                          deal_discount_price <= deal_normal_price
+                        ) {
+                          clearErrors("deal_discount_price");
+                          return true;
+                        } else if (deal_discount_price > deal_normal_price)
+                          return "Zwykła cena powinna być wyższa niż okazyjna";
+                        return true;
+                      },
+                    })}
+                  />
+                  <span className="pointer-events-none absolute left-3 top-0 flex h-full items-center text-slate-400">
+                    PLN
+                  </span>
+                  {discount_price < normal_price && (
+                    <span className="pointer-events-none absolute bottom-0 right-1 top-0 my-auto h-fit rounded-md bg-accent-light px-2 py-1 text-sm font-semibold text-white">
+                      -
+                      {Math.round(
+                        ((normal_price - discount_price) / normal_price) * 100,
+                      )}
+                      %
+                    </span>
+                  )}
+                </div>
+                {errors.deal_normal_price?.message && (
+                  <p className="text-[12px] text-red-500">
+                    {errors.deal_normal_price.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -248,7 +250,7 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
                     />
                   )}
                 />
-                <p className="text-[12px] text-red-500">
+                <p className="max-w-[192px] text-[12px] text-red-500">
                   {errors.deal_start_date?.message}
                 </p>
               </div>
@@ -276,7 +278,7 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
                     />
                   )}
                 />
-                <p className="text-[12px] text-red-500">
+                <p className="max-w-[192px] text-[12px] text-red-500">
                   {errors.deal_end_date?.message}
                 </p>
               </div>
@@ -319,8 +321,11 @@ const DetailsStep = React.forwardRef<StepperRef>((_props, ref) => {
               }}
             />
           </div>
-          <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4">
-            <Button type="submit" className="h-fit w-full py-3">
+          <div className="fixed bottom-0 left-0 z-50 w-full border border-slate-300 bg-white p-4 lg:static lg:!mt-12 lg:border-none lg:p-0">
+            <Button
+              type="submit"
+              className="h-fit w-full py-3 lg:ml-auto lg:w-fit lg:px-4"
+            >
               Następny krok
             </Button>
           </div>
