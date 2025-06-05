@@ -33,7 +33,7 @@ export default function Draggable({
     <div
       ref={gridRef}
       className={cn(
-        "mt-4 grid auto-rows-fr grid-cols-2 gap-4  rounded-md border-dashed border-slate-300 p-3 has-[*]:border-2 md:grid-cols-3 ",
+        "mt-4 grid w-fit auto-rows-fr grid-cols-2 gap-4 rounded-md border-dashed border-slate-300 p-3 has-[*]:border-2 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]",
         className,
       )}
     >
