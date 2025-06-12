@@ -7,7 +7,12 @@ interface Props {
 
 export default function TypographyP({ className, children }: Props) {
   return (
-    <p className={cn("text-sm font-normal text-slate-700", className)}>
+    <p
+      className={cn(
+        "text-sm font-normal text-slate-700 lg:text-base",
+        className,
+      )}
+    >
       {children}
     </p>
   );

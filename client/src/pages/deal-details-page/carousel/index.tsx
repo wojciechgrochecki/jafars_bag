@@ -3,15 +3,18 @@ import DealImg1 from "@assets/deal1.jpg";
 import DealImg2 from "@assets/deal2.jpg";
 import DealImg3 from "@assets/deal3.jpg";
 import { DotButton, useDotButton } from "./DotButton";
+import { cn } from "@/utils/cn";
 
-export default function Carousel() {
+interface Carousel extends React.HTMLAttributes<HTMLDivElement> {}
+
+export default function Carousel({ className, ...props }: Carousel) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
   return (
-    <div className="h-fit w-full bg-white">
+    <div {...props} className={cn("h-fit w-full bg-white", className)}>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex h-64 touch-pan-y">
           <div className="flex h-full flex-[0_0_100%] justify-center p-3">
