@@ -1,3 +1,4 @@
+import { cn } from "@/utils/cn";
 import { IconThumbUp, IconThumbDown } from "@tabler/icons-react";
 import { useState } from "react";
 
@@ -15,8 +16,11 @@ export default function VoteButton({
   };
   return (
     <div
-      className="flex items-center justify-center gap-1 rounded-full border border-slate-300 p-[6px]"
       {...props}
+      className={cn(
+        "flex w-fit items-center justify-center gap-1 rounded-full border border-slate-300 p-[6px]",
+        props.className,
+      )}
       onClick={(e) => e.preventDefault()}
     >
       {selection !== -1 && (

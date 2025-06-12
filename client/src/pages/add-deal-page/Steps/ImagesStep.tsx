@@ -47,7 +47,7 @@ const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
   );
 
   return (
-    <div className="lg:shadow-card flex flex-col items-center gap-8 rounded-2xl border-none pb-20 lg:flex lg:h-fit lg:flex-grow lg:gap-12 lg:bg-white lg:p-8">
+    <div className="flex flex-col items-center gap-8 rounded-2xl border-none pb-20 lg:flex lg:h-fit lg:flex-grow lg:gap-12 lg:bg-white lg:p-8 lg:shadow-card">
       <header>
         <TypographyH2 className="text-center">Zdjęcia</TypographyH2>
         <p className="font-base mt-2 text-center text-slate-500">
@@ -75,7 +75,7 @@ const ImagesStep = React.forwardRef<StepperRef>((_props, ref) => {
               type="submit"
               className="h-fit w-full py-3 lg:ml-auto lg:w-fit lg:px-4"
             >
-              Następny krok
+              Zakończ
             </Button>
           </div>
         </form>

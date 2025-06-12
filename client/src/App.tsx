@@ -6,10 +6,12 @@ import AddDealPage from "./pages/add-deal-page";
 import AccountPage from "./pages/account-page";
 import MyDeals from "./pages/account-page/MyDeals";
 import SavedDeals from "./pages/account-page/SavedDeals";
+import DesktopNav from "./components/nav/DesktopNav";
 
 function App() {
   return (
-    <>
+    <div className="contents lg:grid lg:grid-rows-[auto_1fr] lg:gap-4">
+      <DesktopNav />
       <Routes>
         <Route element={<LayoutWithNav />}>
           <Route index path="/" element={<HomePage />} />
@@ -20,7 +22,7 @@ function App() {
         <Route path="konto/moje-okazje" element={<MyDeals />} />
         <Route path="konto/zapisane-okazje" element={<SavedDeals />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
