@@ -1,0 +1,143 @@
+DROP SCHEMA IF EXISTS jafarsbagdb CASCADE;
+CREATE SCHEMA jafarsbagdb;
+
+-- SET search_path TO jafarsbagdb;
+--
+-- CREATE TABLE IF NOT EXISTS "user"
+-- (
+--     id            SERIAL PRIMARY KEY,
+--     username      VARCHAR(25)  NOT NULL UNIQUE,
+--     email         VARCHAR(254) NOT NULL UNIQUE,
+--     password_hash VARCHAR(40)  NOT NULL,
+--     created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     CONSTRAINT username_length_check CHECk (char_length(username) >= 5 AND char_length(username) <= 25),
+--     CONSTRAINT email_length_check CHECk (char_length(email) >= 5)
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS user_avatar
+-- (
+--     owner_id   INTEGER PRIMARY KEY,
+--     path       VARCHAR(255) NOT NULL,
+--     crop_path  VARCHAR(255) NOT NULL,
+--     created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS deal
+-- (
+--     id              SERIAL PRIMARY KEY,
+--     author_id       INTEGER      NOT NULL,
+--     category        VARCHAR(30),
+--     title           VARCHAR(120) NOT NULL,
+--     description     TEXT         NOT NULL,
+--     url             VARCHAR(255) NOT NULL,
+--     heat            INTEGER      NOT NULL DEFAULT 0,
+--     expiration_date TIMESTAMP,
+--     created_at      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at      TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS deal_attachment
+-- (
+--     id         SERIAL PRIMARY KEY,
+--     deal_id    INTEGER      NOT NULL,
+--     path       VARCHAR(255) NOT NULL,
+--     crop_path  VARCHAR(255) NOT NULL,
+--     created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS deal_comment
+-- (
+--     id         INTEGER PRIMARY KEY,
+--     deal_id    INTEGER       NOT NULL,
+--     author_id  INTEGER       NOT NULL,
+--     parent_id  INTEGER                DEFAULT NULL,
+--     content    VARCHAR(1000) NOT NULL,
+--     created_at TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS notification
+-- (
+--     id         SERIAL PRIMARY KEY,
+--     recipient  INTEGER      NOT NULL,
+--     content    VARCHAR(100) NOT NULL,
+--     created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS deal_category
+-- (
+--     name VARCHAR(30) PRIMARY KEY
+-- );
+--
+-- ALTER TABLE user_avatar
+--     ADD CONSTRAINT fk_user_avatar_user FOREIGN KEY (owner_id) REFERENCES "user" (id);
+--
+-- ALTER TABLE deal
+--     ADD CONSTRAINT fk_deal_user FOREIGN KEY (author_id) REFERENCES "user" (id),
+--     ADD CONSTRAINT fk_deal_category FOREIGN KEY (category) REFERENCES deal_category (name);
+--
+-- ALTER TABLE deal_attachment
+--     ADD CONSTRAINT fk_deal_attachment_deal FOREIGN KEY (deal_id) REFERENCES deal (id);
+--
+-- ALTER TABLE deal_comment
+--     ADD CONSTRAINT fk_deal_comment_deal FOREIGN KEY (deal_id) REFERENCES deal (id),
+--     ADD CONSTRAINT fk_deal_comment_user FOREIGN KEY (author_id) REFERENCES "user" (id),
+--     ADD CONSTRAINT fk_deal_comment_deal_comment FOREIGN KEY (parent_id) REFERENCES deal_comment (id);
+--
+-- ALTER TABLE notification
+--     ADD CONSTRAINT fk_notification_user FOREIGN KEY (recipient) REFERENCES "user" (id);
+--
+-- CREATE FUNCTION update_updated_at_column()
+--     RETURNS TRIGGER AS
+-- '
+--     BEGIN
+--         NEW.updated_at = now();
+--         RETURN NEW;
+--     END;
+-- ' language plpgsql;
+--
+-- CREATE TRIGGER update_user_updated_at
+--     BEFORE UPDATE
+--     ON
+--         "user"
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
+--
+-- CREATE TRIGGER update_user_avatar_updated_at
+--     BEFORE UPDATE
+--     ON
+--         user_avatar
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
+--
+-- CREATE TRIGGER update_deal_updated_at
+--     BEFORE UPDATE
+--     ON
+--         deal
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
+--
+-- CREATE TRIGGER update_deal_attachment_updated_at
+--     BEFORE UPDATE
+--     ON
+--         deal_attachment
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
+--
+-- CREATE TRIGGER update_deal_comment_updated_at
+--     BEFORE UPDATE
+--     ON
+--         deal_comment
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
+--
+-- CREATE TRIGGER update_notification_updated_at
+--     BEFORE UPDATE
+--     ON
+--         notification
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE update_updated_at_column();
