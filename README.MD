@@ -4,7 +4,7 @@ Web application to browse discounts and special offers.
 
 ### Screenshot
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 20px 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 60px; margin: 20px 0;">
 
 <img src="./screenshots/mobile-1.png" width="240" alt="Mobile Design Part 1">
 
