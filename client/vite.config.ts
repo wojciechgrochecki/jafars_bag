@@ -4,7 +4,7 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: { open: true },
+  server: { open: true, host: true, port: 5173 },
   plugins: [react(), svgr({ include: "**/*.svg?react" })],
   resolve: {
     alias: {

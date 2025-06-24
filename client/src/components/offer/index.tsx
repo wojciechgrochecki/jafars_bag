@@ -21,7 +21,7 @@ function OfferExcerpt() {
     >
       <OfferImg
         imageClassName="lg:w-auto w-full h-full"
-        className="max-w-28 lg:col-span-1 lg:row-span-4 lg:flex lg:h-full lg:max-w-52 lg:shrink-0"
+        className="max-w-28 lg:col-span-1 lg:row-span-4 lg:flex lg:h-full lg:max-w-60 lg:shrink-0"
       />
       <div className="col-span-3 flex flex-col gap-1">
         <TypographyH4 className="line-clamp-2 ">
@@ -47,7 +47,7 @@ function OfferExcerpt() {
           className="lg:col-start-4 lg:row-start-1"
         />
       </div>
-      <div className="flex flex-row items-center gap-1 lg:col-start-2 lg:row-start-4">
+      <div className="flex flex-row items-center gap-2 lg:col-start-2 lg:row-start-4">
         <Avatar>
           <AvatarImage src={import.meta.env.DEFAULT_AVATAR_PATH} />
           <AvatarFallback delayMs={500}>AV</AvatarFallback>

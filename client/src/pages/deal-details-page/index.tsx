@@ -48,7 +48,7 @@ function DealPage() {
               czy DLSS. Dzięki długości około 220mm
             </TypographyP>
           </div>
-          <div className="flex flex-row items-center gap-1">
+          <div className="flex flex-row items-center gap-2">
             <Avatar>
               <AvatarImage src={import.meta.env.VITE_DEFAULT_AVATAR_PATH} />
               <AvatarFallback delayMs={500}>AV</AvatarFallback>
@@ -63,7 +63,7 @@ function DealPage() {
             </div>
           </div>
         </section>
-        <div className="hidden px-4 pb-4 lg:col-span-4 lg:row-start-4 lg:block">
+        <div className="hidden px-4 pb-6 lg:col-span-4 lg:row-start-4 lg:block">
           <h5 className="mb-1 font-semibold text-slate-700">Opis</h5>
           <TypographyP>
             Dzięki GPU w architekturze NVIDIA Ampere oraz 12GB pamięci GDDR6,
